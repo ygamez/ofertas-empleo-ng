@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+
+
+    <div class="col-xl-12 col-md-12">
+      <div class="card table-card">
+        <div class="card-header">
+          <h4 >Editar Usuario - {{usuario.nombre}}</h4>
+          <div class="card-header-right">
+
+            <span>Actualizado: {{usuario.updatedAt | amTimeAgo:false}} </span>
+
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="edit-info">
+            <div class="row">
+              <div class="col-lg-12">
+                <form [formGroup]="formGroup">
+                  <div class="general-info">
+                    <div class="row">
+
+                      <div class="col-lg-6">
+                        <table class="table">
+                          <tbody>
+                          <tr>
+                            <td>
+                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.name.errors }">
+                                <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                <input name="name" class="form-control" formControlName="name" placeholder="Nombre y Apellidos" type="text" />
+                              </div>
+                              <div  *ngIf="submitted && f.name.errors" >
+                                <div class="text-danger" *ngIf="f.name.errors.required">Nombre es obligatorio</div>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.role.errors }">
+                                <span class="input-group-addon"><i class="icofont icofont-license"></i></span>
+                                <select formControlName="role" class="form-control">
+                                  <option value="">Selecciones el Rol</option>
+                                  <option value="ROLE_OBSERVADOR">Rol Observador</option>
+                                  <option value="ROLE_ADMIN">Rol Administrador</option>
+                                </select>
+                              </div>
+                              <div  *ngIf="submitted && f.role.errors" >
+                                <div class="text-danger" *ngIf="f.role.errors.required">El rol es obligatorio</div>
+                              </div>
+                            </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end of table col-lg-6 -->
+                      <div class="col-lg-6">
+                        <table class="table">
+                          <tbody>
+                          <tr>
+                            <td>
+
+                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.email.errors }">
+                                <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                <input type="text" formControlName="email" class="form-control" placeholder="Correo Electronico"  />
+                              </div>
+                              <div  *ngIf="submitted && f.email.errors" >
+                                <div class="text-danger" *ngIf="f.email.errors.required">Email es obligatorio</div>
+                                <div class="text-danger" *ngIf="f.email.errors.email">No es una direccion de Email valida</div>
+                              </div>
+
+
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="icofont icofont-camera-alt"></i></span>
+                                <input type="file" class="form-control" placeholder="Foto de Perfil">
+                              </div>
+                            </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end of table col-lg-6 -->
+                    </div>
+                    <!-- end of row -->
+                    <div class="text-center">
+                      <a [routerLink]="['/configuracion/usuario']"  class="btn btn-danger m-r-20 waves-effect">Cancelar</a>
+                      <button class="btn btn-primary waves-effect waves-light m-r-20" (click)="register()" [disabled]="formGroup.invalid">Guardar</button>
+
+                    </div>
+                  </div>
+                </form>
+                <!-- end of edit info -->
+              </div>
+              <!-- end of col-lg-12 -->
+            </div>
+            <!-- end of row -->
+          </div>
+          <!-- end of edit-info -->
+
+        </div>
+      </div>
+    </div>
+    <!-- Basic Form Inputs card end -->
+
+  </div>
+</div>
+
