@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,8 @@ import { CursoAdminComponent } from './componentes/curso-admin/curso-admin.compo
 import { CursoNuevoComponent } from './componentes/curso-nuevo/curso-nuevo.component';
 import { CursoEditarComponent } from './componentes/curso-editar/curso-editar.component';
 import { CursoDetallesComponent } from './componentes/curso-detalles/curso-detalles.component';
+import {AuthInterceptorService} from './servicios/auth-interceptor.service';
+import {UsuarioGuardService} from './servicios/usuario-guard.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ import { CursoDetallesComponent } from './componentes/curso-detalles/curso-detal
     }),
     ReactiveFormsModule
   ],
-  providers: [ActVarPageService],
+  providers: [ActVarPageService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true } , UsuarioGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

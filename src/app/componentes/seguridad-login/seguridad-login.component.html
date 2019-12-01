@@ -16,9 +16,8 @@
                   <h3 class="text-center">Inicio Sección</h3>
                 </div>
               </div>
-              <div class="alert alert-danger icons-alert" style="display: none">
-
-                Oh snap! El usuario no existe en el sistema. Contacte con el Adminstrador del mismo
+              <div *ngIf="error" class="alert alert-danger icons-alert">
+                Oh snap! {{error}}
               </div>
 
               <div class="form-group">
@@ -51,7 +50,13 @@
               </div>
               <div class="row m-t-30">
                 <div class="col-md-12">
-                  <button (click)="login()" [disabled]="formGroup.invalid && submitted" type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Iniciar Sección</button>
+                  <div *ngIf="cargando"  class="preloader3 btn btn-md btn-block text-center m-b-20" style="height: 25px">
+                    <div class="circ1"></div>
+                    <div class="circ2"></div>
+                    <div class="circ3"></div>
+                    <div class="circ4"></div>
+                  </div>
+                  <button *ngIf="!cargando" (click)="login()" [disabled]="formGroup.invalid && submitted" type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Iniciar Sección</button>
                 </div>
               </div>
 

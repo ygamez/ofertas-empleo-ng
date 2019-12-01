@@ -65,7 +65,7 @@
               <div class="dropdown-primary dropdown">
                 <div class="dropdown-toggle" data-toggle="dropdown">
                   <img src="./assets/assets/images/d.jfif" class="img-radius" alt="User-Profile-Image">
-                  <span>Nahomy Quiñones Rodríguez</span>
+                  <span>{{identity.nombre}}</span>
                   <i class="feather icon-chevron-down"></i>
                 </div>
                 <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -74,7 +74,7 @@
                     <a routerLink="/seguridad/inicio-seccion" class="logo"> <i class="icofont icofont-key"></i> Iniciar Sección </a>
                   </li>
                   <li>
-                    <a routerLink="/algo" class="logo"> <i class="feather icon-log-out"></i> Cerrar Sección </a>
+                    <a (click)="cerrarSeccion()"class="logo"> <i class="feather icon-log-out"></i> Cerrar Sección </a>
                   </li>
                 </ul>
 

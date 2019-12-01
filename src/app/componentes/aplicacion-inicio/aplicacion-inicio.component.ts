@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from '../../servicios/usuario.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-aplicacion-inicio',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aplicacion-inicio.component.css']
 })
 export class AplicacionInicioComponent implements OnInit {
-
-  constructor() {
+public identity;
+  constructor(private usuarioService: UsuarioService, private router: Router) {
+    this.identity = usuarioService.getIdentity();
   }
 
   ngOnInit() {
@@ -23,6 +26,10 @@ export class AplicacionInicioComponent implements OnInit {
     script.async = false;
     script.defer = true;
     body.appendChild(script);
+  }
+  public  cerrarSeccion() {
+    this.usuarioService.logout();
+    this.router.navigate(['seguridad/inicio-seccion']);
   }
 
 

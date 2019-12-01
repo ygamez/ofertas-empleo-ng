@@ -16,6 +16,7 @@ import {CursoAdminComponent} from './componentes/curso-admin/curso-admin.compone
 import {CursoNuevoComponent} from './componentes/curso-nuevo/curso-nuevo.component';
 import {CursoDetallesComponent} from './componentes/curso-detalles/curso-detalles.component';
 import {CursoEditarComponent} from './componentes/curso-editar/curso-editar.component';
+import {UsuarioGuardService} from './servicios/usuario-guard.service';
 
 
 const routes: Routes = [
@@ -27,7 +28,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '', component: AplicacionInicioComponent,
+    path: '', component: AplicacionInicioComponent, canActivate: [UsuarioGuardService],
     children: [
       {
         path: 'configuracion/usuario', component: UsuarioInicioComponent,
