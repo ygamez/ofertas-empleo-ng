@@ -4,6 +4,7 @@ import 'moment/locale/es';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Usuario} from '../../modelos/usuario.model';
 import {UsuarioService} from '../../servicios/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario-admin',
@@ -74,6 +75,11 @@ export class UsuarioAdminComponent implements OnInit {
                 this.formGroup.reset();
                 this.formGroup.get('role').setValue('');
                 this.submitted = false;
+                Swal.fire(
+                  'Registrar Usuario',
+                  'se registro correctamente el nuevo usuario',
+                  'success'
+                );
               } else {
                // tratamiento de errores
               }
@@ -85,22 +91,41 @@ export class UsuarioAdminComponent implements OnInit {
   }
   get f() { return this.formGroup.controls; }
   eliminar(userId) {
-    this.userService.deleteUser(userId).subscribe(
-      response => {
-        if ( response && response.id) {
-          for (let i = 0; i < this.usuarios.length; i++) {
-            if (this.usuarios[i].id === response.id) {
-              this.usuarios.splice(i, 1);
+    Swal.fire({
+      title: '¿Usted esta Seguro?',
+      text: 'Eliminar el usuario selecionado de manera permanente',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Eliminar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.userService.deleteUser(userId).subscribe(
+          response => {
+            if ( response && response.id) {
+              for (let i = 0; i < this.usuarios.length; i++) {
+                if (this.usuarios[i].id === response.id) {
+                  this.usuarios.splice(i, 1);
+                  Swal.fire(
+                    'Eliminar Usuario',
+                    'Se elimino correctamente',
+                    'success'
+                  );
+                }
+              }
+            } else {
+              // tratamiento de errores
             }
+          },
+          error => {
+            // console.log(<any>error);
           }
-        } else {
-          // tratamiento de errores
-        }
-      },
-      error => {
-        // console.log(<any>error);
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // accion de cuando se ejecuta el boton de cancelar
       }
-    );
+    });
+
   }
 
   activo(userId) {

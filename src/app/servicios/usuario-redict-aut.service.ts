@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 import {UsuarioService} from './usuario.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,11 @@ export class UsuarioRedictAutService implements CanActivate {
 
     if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN')) {
       this.router.navigate(['']);
-      alert('Usted ya se encuatra autenticado no puede acceder a la pag de login');
+      Swal.fire(
+        'Acceso Restringido',
+        'usted ya se encuatra autenticado por eso no puede acceder a la pagina de inicio de seccion',
+        'error'
+      );
       return false;
     } else {
       return true;

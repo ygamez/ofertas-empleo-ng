@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from '../../servicios/usuario.service';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-aplicacion-inicio',
@@ -28,8 +29,21 @@ public identity;
     body.appendChild(script);
   }
   public  cerrarSeccion() {
-    this.usuarioService.logout();
-    this.router.navigate(['seguridad/inicio-seccion']);
+    Swal.fire({
+      title: '¿Usted esta Seguro?',
+      text: 'cerrar su sección de trabajo activa',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Cerrar Sección',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.usuarioService.logout();
+        this.router.navigate(['seguridad/inicio-seccion']);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // accion de cuando se ejecuta el boton de cancelar
+      }
+    });
   }
 
 
