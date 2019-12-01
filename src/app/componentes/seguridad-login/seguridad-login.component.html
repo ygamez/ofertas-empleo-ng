@@ -21,7 +21,7 @@
               </div>
 
               <div class="form-group">
-                <input formControlName="email" class="form-control " [ngClass]="{ 'form-control-danger': submitted && f.email.errors }" placeholder="Correo Electrónico" >
+                <input formControlName="email" type="email" class="form-control " [ngClass]="{ 'form-control-danger': submitted && f.email.errors }" placeholder="Correo Electrónico" >
                 <div  *ngIf="submitted && f.email.errors" >
                   <div class="text-danger col-form-label" *ngIf="f.email.errors.required">Email es obligatorio</div>
                   <div class="text-danger col-form-label" *ngIf="f.email.errors.email">No es una direccion de Email valida</div>

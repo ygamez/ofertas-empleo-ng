@@ -9,7 +9,7 @@
           <h4 >Listado de todos los Cursos</h4>
           <div class="card-header-right">
 
-            <a [routerLink]="['../nuevo']" ><i class="icofont icofont-plus"> Nuevo Curso</i></a>
+            <a [routerLink]="['nuevo']" ><i class="icofont icofont-plus"> Nuevo Curso</i></a>
           </div>
         </div>
         <div class="card-block">
@@ -46,11 +46,11 @@
 
                 <td>
 
-                  <a type="button" [routerLink]="['../detalles', curso.id]" routerLinkActive="" class="btn btn-outline-primary btn-mini waves-effect waves-light m-r-5" >
+                  <a type="button" [routerLink]="['detalles', curso.id]" routerLinkActive="" class="btn btn-outline-primary btn-mini waves-effect waves-light m-r-5" >
                     <i class="icofont icofont-eye f-16 m-0"></i>
                   </a>
 
-                  <a type="button" [routerLink]="['../editar', curso.id]"  class="btn btn-outline-warning  btn-mini waves-effect waves-light m-r-5"   >
+                  <a type="button" [routerLink]="['editar', curso.id]"  class="btn btn-outline-warning  btn-mini waves-effect waves-light m-r-5"   >
                     <i class="icofont icofont-edit-alt f-16 m-0"></i>
                   </a>
 

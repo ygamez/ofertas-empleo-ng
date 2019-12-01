@@ -26,6 +26,7 @@ import { CursoEditarComponent } from './componentes/curso-editar/curso-editar.co
 import { CursoDetallesComponent } from './componentes/curso-detalles/curso-detalles.component';
 import {AuthInterceptorService} from './servicios/auth-interceptor.service';
 import {UsuarioGuardService} from './servicios/usuario-guard.service';
+import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import {UsuarioGuardService} from './servicios/usuario-guard.service';
     }),
     ReactiveFormsModule
   ],
-  providers: [ActVarPageService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true } , UsuarioGuardService],
+  providers: [ActVarPageService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true } , UsuarioRedictAutService, UsuarioGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

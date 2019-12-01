@@ -212,8 +212,8 @@
                     <span class="pcoded-mtext">Curso</span>
                   </a>
                   <ul class="pcoded-submenu">
-                    <li routerLinkActive="active">
-                      <a  routerLink='/curso/administrar' >
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                      <a  routerLink='/curso/' >
                         <span class="pcoded-mtext">Administar</span>
                       </a>
                     </li>
@@ -241,8 +241,8 @@
                 </a>
               </li>
             </ul>
-            <div class="pcoded-navigatio-lavel">Administrar Sistema</div>
-            <ul class="pcoded-item pcoded-left-item">
+            <div *ngIf="identity.role ==='ROLE_ADMIN'" class="pcoded-navigatio-lavel">Administrar Sistema</div>
+            <ul *ngIf="identity.role ==='ROLE_ADMIN'" class="pcoded-item pcoded-left-item">
               <li class="pcoded-hasmenu  " routerLinkActive="pcoded-trigger"  >
                 <a href="javascript:void(0)">
                   <span class="pcoded-micon"><i class="feather icon-box"></i></span>

@@ -5,7 +5,7 @@ import {UsuarioService} from './usuario.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioGuardService implements CanActivate {
+export class UsuarioRedictAutService implements CanActivate {
   public url: string;
   public identity;
   public token;
@@ -20,10 +20,11 @@ export class UsuarioGuardService implements CanActivate {
     const identity = this.usuarioService.getIdentity();
 
     if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN')) {
-      return true;
-    } else {
-      this.router.navigate(['/seguridad/inicio-seccion']);
+      this.router.navigate(['']);
+      alert('Usted ya se encuatra autenticado no puede acceder a la pag de login');
       return false;
+    } else {
+      return true;
     }
   }
 }

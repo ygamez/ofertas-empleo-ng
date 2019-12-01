@@ -38,9 +38,9 @@ export class CursoNuevoComponent implements OnInit {
       profesor_principal: [this.curso.profesor_principal, Validators.required],
       tipo_curso: [this.curso.tipo_curso, Validators.required],
       correo_contaco: [this.curso.correo_contaco, [
-        Validators.required, Validators.email
+        Validators.email
       ]],
-      otro_profesor: [this.curso.otro_profesor, Validators.required],
+      otro_profesor: [this.curso.otro_profesor],
       descripcion: [this.curso.descripcion, Validators.required]
     });
   }

@@ -17,11 +17,13 @@ import {CursoNuevoComponent} from './componentes/curso-nuevo/curso-nuevo.compone
 import {CursoDetallesComponent} from './componentes/curso-detalles/curso-detalles.component';
 import {CursoEditarComponent} from './componentes/curso-editar/curso-editar.component';
 import {UsuarioGuardService} from './servicios/usuario-guard.service';
+import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
+import {UsuarioAdminAccessService} from './servicios/usuario-admin-access.service';
 
 
 const routes: Routes = [
   {
-    path: 'seguridad', component: SeguridadInicioComponent,
+    path: 'seguridad', component: SeguridadInicioComponent, canActivate: [UsuarioRedictAutService],
     children: [
       { path: 'inicio-seccion', component: SeguridadLoginComponent, },
       { path: 'reset-contrasenna', component: SeguridadResetPasswordComponent },
@@ -31,7 +33,7 @@ const routes: Routes = [
     path: '', component: AplicacionInicioComponent, canActivate: [UsuarioGuardService],
     children: [
       {
-        path: 'configuracion/usuario', component: UsuarioInicioComponent,
+        path: 'configuracion/usuario', component: UsuarioInicioComponent, canActivate: [UsuarioGuardService, UsuarioAdminAccessService],
         children: [
           { path: '', component: UsuarioAdminComponent, },
           { path: 'detalles/:id', component: UsuarioDetallesComponent, },
@@ -49,7 +51,7 @@ const routes: Routes = [
       {
         path: 'curso', component: CursoInicioComponent,
         children: [
-          { path: 'administrar', component: CursoAdminComponent, },
+          { path: '', component: CursoAdminComponent, },
           { path: 'detalles/:id', component: CursoDetallesComponent, },
           { path: 'editar/:id', component: CursoEditarComponent, },
           { path: 'nuevo', component: CursoNuevoComponent, },
