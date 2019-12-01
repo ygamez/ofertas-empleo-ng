@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Usuario} from '../../modelos/usuario.model';
 import {UsuarioService} from '../../servicios/usuario.service';
 import Swal from 'sweetalert2';
+declare var $: any;
+
 
 @Component({
   selector: 'app-usuario-admin',
@@ -14,10 +16,12 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioAdminComponent implements OnInit {
   // usuarios: ILogro[];
+  public $: any;
   public usuarios: Usuario[];
   public usuario: Usuario;
   public formGroup: FormGroup;
   submitted = false;
+  public error = '' ;
   private lastUpdated: Date;
   constructor(private dataService: ActVarPageService, private formBuilder: FormBuilder, private userService: UsuarioService) {
     this.lastUpdated = new Date('2019/11/21 17:10:10');
@@ -73,8 +77,10 @@ export class UsuarioAdminComponent implements OnInit {
                 this.usuario = response.usuario;
                 this.usuarios.push(this.usuario);
                 this.formGroup.reset();
+                this.error = '';
                 this.formGroup.get('role').setValue('');
                 this.submitted = false;
+                $('#large-Modal').modal('hide');
                 Swal.fire(
                   'Registrar Usuario',
                   'se registro correctamente el nuevo usuario',
@@ -85,7 +91,7 @@ export class UsuarioAdminComponent implements OnInit {
               }
             },
             error => {
-              // console.log(<any>error);
+              this.error = error.error.message;
             }
           );
   }

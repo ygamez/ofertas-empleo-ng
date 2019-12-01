@@ -75,7 +75,6 @@
       </div>
     </div>
     <!-- Basic Form Inputs card end -->
-
     <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -86,8 +85,12 @@
             </button>
           </div>
           <div class="modal-body">
+
             <form [formGroup]="formGroup">
               <div class="col-lg-12">
+                <div *ngIf="error" class="alert alert-danger icons-alert">
+                  Oh snap! {{error}}
+                </div>
                 <table class="table">
                   <tbody>
                   <tr>

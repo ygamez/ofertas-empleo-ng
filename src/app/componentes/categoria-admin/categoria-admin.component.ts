@@ -11,5 +11,4 @@ export class CategoriaAdminComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
