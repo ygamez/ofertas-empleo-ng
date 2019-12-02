@@ -60,7 +60,7 @@ export class CursoNuevoComponent implements OnInit {
       response => {
         if ( response.curso && response.curso.nombre) {
           this.curso = response.curso;
-          this.router.navigate(['curso/administrar']);
+          this.router.navigate(['curso']);
         } else {
           // tratamiento de errores
         }
