@@ -39,7 +39,9 @@
                 </td>
                 <td>{{usuario.email}}</td>
                 <td>
-                  {{usuario.role==='ROLE_ADMIN' ? 'Administrador' : 'Observador'}}
+                  {{usuario.role==='ROLE_ADMIN' ? 'Administrador' : ''}}
+                  {{usuario.role==='ROLE_OBSERVADOR' ? 'Observador' : ''}}
+                  {{usuario.role==='ROLE_EVALUADOR' ? 'Evaluador' : ''}}
                 </td>
                 <td><time>{{usuario.updatedAt | amTimeAgo:false}}</time></td>
 
