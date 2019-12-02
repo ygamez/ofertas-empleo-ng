@@ -1,1 +1,133 @@
-<p>curso-editar works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+    <div class="card">
+      <div class="card-header">
+        <h4 >Editar Curso</h4>
+
+        <div class="card-header-right">
+
+        </div>
+
+
+
+      </div>
+      <div class="card-block">
+
+        <form [formGroup]="formGroup">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="sub-title">Información General</h4>
+
+
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.nombre.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-learn"></i></span>
+                <input  class="form-control" formControlName="nombre" type="text" placeholder="Nombre del Curso" />
+              </div>
+              <div  *ngIf="submitted && f.nombre.errors" >
+                <div class="text-danger" *ngIf="f.nombre.errors.required">Nombre del curso es obligatorio</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.correo_contaco.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                <input type="text" formControlName="correo_contaco" class="form-control" placeholder="Correo de contacto"  />
+              </div>
+              <div  *ngIf="submitted && f.correo_contaco.errors" >
+                <div class="text-danger" *ngIf="f.correo_contaco.errors.required">Email es obligatorio</div>
+                <div class="text-danger" *ngIf="f.correo_contaco.errors.email">No es una direccion de Email valida</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.area_conocimiento.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-light-bulb"></i></span>
+                <input  class="form-control" formControlName="area_conocimiento" type="text" placeholder="Area de Conocimiento o Departamento" />
+              </div>
+              <div  *ngIf="submitted && f.area_conocimiento.errors" >
+                <div class="text-danger" *ngIf="f.area_conocimiento.errors.required">Area del Conocimiento o Departamentoes obligatorio</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.anno_academico.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-clock-time"></i></span>
+                <select formControlName="anno_academico" class="form-control">
+                  <option value="">Selecciones Año académico o Destinatarios</option>
+                  <option value="posgrado">Postgrado</option>
+                </select>
+              </div>
+              <div  *ngIf="submitted && f.anno_academico.errors" >
+                <div class="text-danger" *ngIf="f.anno_academico.errors.required">Año académico o Destinatarios es obligatorio</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.profesor_principal.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                <input  class="form-control" formControlName="profesor_principal" type="text" placeholder="Profesor Principal" />
+              </div>
+              <div  *ngIf="submitted && f.profesor_principal.errors" >
+                <div class="text-danger" *ngIf="f.profesor_principal.errors.required">Profesor principal es obligatorio</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.tipo_curso.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-license"></i></span>
+                <select formControlName="tipo_curso" class="form-control">
+                  <option value="">Selecciones Tipo Curso</option>
+                  <option value="de-apoyo">De apoyo</option>
+                  <option value="semipresencial">Semipresencial</option>
+                  <option value="a-distancia">A distancia</option>
+                </select>
+              </div>
+              <div  *ngIf="submitted && f.tipo_curso.errors" >
+                <div class="text-danger" *ngIf="f.tipo_curso.errors.required">Tipo de curso es obligatorio</div>
+              </div>
+
+              <br>
+
+              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.otro_profesor.errors }">
+                <span class="input-group-addon"><i class="icofont icofont-group"></i></span>
+                <input  class="form-control" formControlName="otro_profesor" type="text" placeholder="Otro Profesor" />
+              </div>
+              <div  *ngIf="submitted && f.otro_profesor.errors" >
+                <div class="text-danger" *ngIf="f.otro_profesor.errors.required">Otro Profesor es obligatorio</div>
+              </div>
+
+              <br>
+
+
+
+            </div>
+            <div class="col-sm-6 mobile-inputs">
+              <h4 class="sub-title">Descripción</h4>
+              <textarea [ngClass]="{ 'form-control-danger': submitted && f.descripcion.errors }" rows="19" cols="10" formControlName="descripcion" class="form-control" placeholder="Descripción del Curso"></textarea>
+              <div  *ngIf="submitted && f.descripcion.errors" >
+                <div class="text-danger" *ngIf="f.descripcion.errors.required">La descripción es obligatoria</div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <div class="text-right m-t-20">
+            <a [routerLink]="['../../curso']"  class="btn btn-danger m-r-20 waves-effect">Cancelar</a>
+            <button type="button" (click)="register()" [disabled]="formGroup.invalid && submitted" class="btn btn-success waves-effect waves-light ">Actualizar</button>
+
+
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <!-- Basic Form Inputs card end -->
+
+</div>

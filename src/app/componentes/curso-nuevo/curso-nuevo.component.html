@@ -56,7 +56,7 @@
               <span class="input-group-addon"><i class="icofont icofont-clock-time"></i></span>
               <select formControlName="anno_academico" class="form-control">
                 <option value="">Selecciones Año académico o Destinatarios</option>
-                <option value="Postgrado">Postgrado</option>
+                <option value="postgrado">Postgrado</option>
               </select>
             </div>
             <div  *ngIf="submitted && f.anno_academico.errors" >
@@ -79,9 +79,9 @@
               <span class="input-group-addon"><i class="icofont icofont-license"></i></span>
               <select formControlName="tipo_curso" class="form-control">
                 <option value="">Selecciones Tipo Curso</option>
-                <option value="De apoyo">De apoyo</option>
-                <option value="Semipresencial">Semipresencial</option>
-                <option value="A distancia">A distancia</option>
+                <option value="de-apoyo">De apoyo</option>
+                <option value="semipresencial">Semipresencial</option>
+                <option value="a-distancia">A distancia</option>
               </select>
             </div>
             <div  *ngIf="submitted && f.tipo_curso.errors" >
