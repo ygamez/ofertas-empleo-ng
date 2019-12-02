@@ -19,7 +19,7 @@ export class UsuarioGuardService implements CanActivate {
   canActivate() {
     const identity = this.usuarioService.getIdentity();
 
-    if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN')) {
+    if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN' || identity.role === 'ROLE_EVALUADOR')) {
       return true;
     } else {
       this.router.navigate(['/seguridad/inicio-seccion']);

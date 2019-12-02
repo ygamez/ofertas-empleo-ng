@@ -20,7 +20,7 @@ export class UsuarioRedictAutService implements CanActivate {
   canActivate() {
     const identity = this.usuarioService.getIdentity();
 
-    if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN')) {
+    if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN' || identity.role === 'ROLE_EVALUADOR')) {
       this.router.navigate(['']);
       Swal.fire(
         'Acceso Restringido',
