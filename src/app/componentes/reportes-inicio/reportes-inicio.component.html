@@ -1,0 +1,94 @@
+<div class="row">
+  <div *ngIf="reporte" class="col-md-12">
+    <div class="alert alert-success icons-alert">
+      <p><strong>Generando PDF.</strong> por favor espere un momento, se esta generando el reporte.</p>
+    </div>
+  </div>
+
+<div class="col-xl-4 col-md-6">
+  <div class="card social-card bg-simple-c-blue">
+    <div class="card-block">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <i class="icofont icofont-file-pdf f-34 text-c-blue social-icon"></i>
+        </div>
+        <div class="col">
+          <h6 class="m-b-0">Cursos Aprobados</h6>
+<br>
+          <p class="">Versión PDF, listo para descargar </p>
+        </div>
+      </div>
+    </div>
+    <a (click)="pdfCursosAprobados()" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+  </div>
+</div>
+
+  <div class="col-xl-4 col-md-6">
+    <div class="card social-card bg-simple-c-blue">
+      <div class="card-block">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <i class="icofont icofont-file-pdf f-34 text-c-blue social-icon"></i>
+          </div>
+          <div class="col">
+            <h6 class="m-b-0">Cursos No Aprobados</h6>
+            <br>
+            <p class="">Versión PDF, listo para descargar </p>
+          </div>
+        </div>
+      </div>
+      <a (click)="pdfCursosNoAprobados()" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+    </div>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <div class="card social-card bg-simple-c-blue">
+      <div class="card-block">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <i class="icofont icofont-file-pdf f-34 text-c-blue social-icon"></i>
+          </div>
+          <div class="col">
+            <h6 class="m-b-0">Evaluaciones a un Curso</h6>
+            <br>
+            <p class="">Versión PDF, listo para descargar </p>
+          </div>
+        </div>
+      </div>
+      <a (click)="pdfCursoEvaluaciones()" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+    </div>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <div class="card social-card bg-simple-c-blue">
+      <div class="card-block">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <i class="icofont icofont-file-pdf f-34 text-c-blue social-icon"></i>
+          </div>
+          <div class="col">
+            <h6 class="m-b-0">Evaluaciones Rango Fecha</h6>
+            <br>
+            <p class="">Versión PDF, listo para descargar </p>
+          </div>
+        </div>
+      </div>
+      <a (click)="pdfEvaluacionesRangoFecha()" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+    </div>
+  </div>
+  <div class="col-xl-4 col-md-6">
+    <div class="card social-card bg-simple-c-blue">
+      <div class="card-block">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <i class="icofont icofont-file-pdf f-34 text-c-blue social-icon"></i>
+          </div>
+          <div class="col">
+            <h6 class="m-b-0">Evaluacion a un Curso</h6>
+            <br>
+            <p class="">Versión PDF, listo para descargar </p>
+          </div>
+        </div>
+      </div>
+      <a (click)="pdfEvaluacionCurso()" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+    </div>
+  </div>
+</div>

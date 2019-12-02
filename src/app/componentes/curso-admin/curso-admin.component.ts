@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActVarPageService} from '../../servicios/act-var-page.service';
 import {UsuarioService} from '../../servicios/usuario.service';
 import {Curso} from '../../modelos/curso.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-curso-admin',
@@ -24,22 +25,41 @@ export class CursoAdminComponent implements OnInit {
     this.getCursos();
   }
   eliminar(cursoId) {
-    this.cursoService.deleteCurso(cursoId).subscribe(
-      response => {
-        if ( response && response.id) {
-          for (let i = 0; i < this.cursos.length; i++) {
-            if (this.cursos[i].id === response.id) {
-              this.cursos.splice(i, 1);
+    Swal.fire({
+      title: '¿Usted esta Seguro?',
+      text: 'Eliminar el curso selecionado de manera permanente',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Eliminar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.cursoService.deleteCurso(cursoId).subscribe(
+          response => {
+            if ( response && response.id) {
+              for (let i = 0; i < this.cursos.length; i++) {
+                if (this.cursos[i].id === response.id) {
+                  this.cursos.splice(i, 1);
+                  Swal.fire(
+                    'Eliminar Curso',
+                    'Se elimino correctamente',
+                    'success'
+                  );
+                }
+              }
+            } else {
+              // tratamiento de errores
             }
+          },
+          error => {
+            // console.log(<any>error);
           }
-        } else {
-          // tratamiento de errores
-        }
-      },
-      error => {
-        // console.log(<any>error);
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // accion de cuando se ejecuta el boton de cancelar
       }
-    );
+    });
+
   }
   getCursos() {
     this.cursoService.getCursos().subscribe(

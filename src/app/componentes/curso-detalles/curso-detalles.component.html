@@ -56,7 +56,9 @@
                             </tr>
                             <tr>
                               <th scope="row">Tipo de Curso</th>
-                              <td>{{curso.tipo_curso}}</td>
+                              <td>{{curso.tipo_curso==='de-apoyo' ? 'De apoyo' : ''}}
+                                {{curso.tipo_curso==='semipresencial' ? 'Semipresencial' : ''}}
+                                {{curso.tipo_curso==='a-distancia' ? 'A distancia' : ''}}</td>
                             </tr>
                             <tr>
                               <th scope="row">Estado</th>
@@ -82,7 +84,7 @@
                             </tr>
                             <tr>
                               <th scope="row">Año Academico</th>
-                              <td>{{curso.anno_academico}}</td>
+                              <td>{{curso.anno_academico==='posgrado' ? 'Posgrado' : ''}}</td>
                             </tr>
                             <tr>
                               <th scope="row">Ultima Actualización</th>

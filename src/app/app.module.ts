@@ -27,6 +27,7 @@ import { CursoDetallesComponent } from './componentes/curso-detalles/curso-detal
 import {AuthInterceptorService} from './servicios/auth-interceptor.service';
 import {UsuarioGuardService} from './servicios/usuario-guard.service';
 import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
+import { ReportesInicioComponent } from './componentes/reportes-inicio/reportes-inicio.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
     CursoAdminComponent,
     CursoNuevoComponent,
     CursoEditarComponent,
-    CursoDetallesComponent
+    CursoDetallesComponent,
+    ReportesInicioComponent
   ],
   imports: [
     BrowserModule,

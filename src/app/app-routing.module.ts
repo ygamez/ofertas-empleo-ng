@@ -19,6 +19,7 @@ import {CursoEditarComponent} from './componentes/curso-editar/curso-editar.comp
 import {UsuarioGuardService} from './servicios/usuario-guard.service';
 import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
 import {UsuarioAdminAccessService} from './servicios/usuario-admin-access.service';
+import {ReportesInicioComponent} from './componentes/reportes-inicio/reportes-inicio.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
           { path: 'editar/:id', component: CursoEditarComponent, },
           { path: 'nuevo', component: CursoNuevoComponent, },
         ]
-      }
+      },
+      {path: 'reportes', component: ReportesInicioComponent},
     ]
   },
   {
