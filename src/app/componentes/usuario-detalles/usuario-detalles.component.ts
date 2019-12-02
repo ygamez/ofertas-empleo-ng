@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ActVarPageService} from '../../servicios/act-var-page.service';
 import {Usuario} from '../../modelos/usuario.model';
-import {FormBuilder} from '@angular/forms';
 import {UsuarioService} from '../../servicios/usuario.service';
 
 @Component({

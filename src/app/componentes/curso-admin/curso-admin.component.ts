@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CursoService} from '../../servicios/curso.service';
-import {Usuario} from '../../modelos/usuario.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActVarPageService} from '../../servicios/act-var-page.service';
-import {UsuarioService} from '../../servicios/usuario.service';
 import {Curso} from '../../modelos/curso.model';
 import Swal from 'sweetalert2';
 

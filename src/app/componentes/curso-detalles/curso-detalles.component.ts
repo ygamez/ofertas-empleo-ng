@@ -1,8 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Usuario} from '../../modelos/usuario.model';
 import {ActivatedRoute} from '@angular/router';
 import {ActVarPageService} from '../../servicios/act-var-page.service';
-import {UsuarioService} from '../../servicios/usuario.service';
 import {Curso} from '../../modelos/curso.model';
 import {CursoService} from '../../servicios/curso.service';
 

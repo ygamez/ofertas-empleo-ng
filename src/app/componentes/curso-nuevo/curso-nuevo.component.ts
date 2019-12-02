@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Usuario} from '../../modelos/usuario.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActVarPageService} from '../../servicios/act-var-page.service';
-import {UsuarioService} from '../../servicios/usuario.service';
 import {CursoService} from '../../servicios/curso.service';
 import {Curso} from '../../modelos/curso.model';
 import {Router} from '@angular/router';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-curso-nuevo',
@@ -74,18 +71,4 @@ export class CursoNuevoComponent implements OnInit {
     );
   }
   get f() { return this.formGroup.controls; }
-  public pdf() {
-    this.cursoService.pdfCurso().subscribe(
-      response => {
-        if ( response) {
-          saveAs(response, 'reporte-evaluacion-curso.pdf');
-        } else {
-          // tratamiento de errores
-        }
-      },
-      error => {
-        // console.log(<any>error);
-      }
-    );
-  }
 }
