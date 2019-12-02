@@ -4,6 +4,7 @@ import {ActVarPageService} from '../../servicios/act-var-page.service';
 import {CursoService} from '../../servicios/curso.service';
 import {Curso} from '../../modelos/curso.model';
 import {Router} from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-curso-nuevo',

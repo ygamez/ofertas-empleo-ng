@@ -16819,8 +16819,7 @@ table.footable-paging-center>tfoot>tr.footable-paging>td {
     font-family: 'IcoFont' !important;
     font-size: 16px;
     left: -30px;
-    position: absolute;
-    top: 20px
+    position: absolute
 }
 
 [class*="alert-"] code {

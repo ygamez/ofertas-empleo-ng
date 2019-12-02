@@ -56,7 +56,7 @@
                 <span class="input-group-addon"><i class="icofont icofont-clock-time"></i></span>
                 <select formControlName="anno_academico" class="form-control">
                   <option value="">Selecciones Año académico o Destinatarios</option>
-                  <option value="posgrado">Postgrado</option>
+                  <option value="posgrado">Posgrado</option>
                 </select>
               </div>
               <div  *ngIf="submitted && f.anno_academico.errors" >
@@ -116,7 +116,7 @@
           </div>
 
           <div class="text-right m-t-20">
-            <a [routerLink]="['../../curso']"  class="btn btn-danger m-r-20 waves-effect">Cancelar</a>
+            <a [routerLink]="['../../']"  class="btn btn-danger m-r-20 waves-effect">Cancelar</a>
             <button type="button" (click)="register()" [disabled]="formGroup.invalid && submitted" class="btn btn-success waves-effect waves-light ">Actualizar</button>
 
 
