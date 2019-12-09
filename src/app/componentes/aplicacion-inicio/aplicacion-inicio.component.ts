@@ -30,7 +30,7 @@ public identity;
   }
   public  cerrarSeccion() {
     Swal.fire({
-      title: '¿Usted esta Seguro?',
+      title: '¿Usted está Seguro?',
       text: 'cerrar su sección de trabajo activa',
       icon: 'info',
       showCancelButton: true,

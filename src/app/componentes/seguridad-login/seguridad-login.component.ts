@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UsuarioService} from '../../servicios/usuario.service';
 import {Usuario} from '../../modelos/usuario.model';
 import {Router} from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-seguridad-login',
@@ -28,6 +29,13 @@ export class SeguridadLoginComponent implements OnInit {
     this.formGroup.valueChanges.subscribe(val => {
       this.submitted = true;
     });
+    // const thiss = this;
+    $(document).keydown(function(tecla) {
+      if (tecla.keyCode === 13) {
+       // thiss.error = 'tuvo un error el sistema';
+      // alert('presiono la tecla enter');
+      }
+    });
   }
   private buildForm() {
     this.formGroup = this.formBuilder.group({
@@ -38,16 +46,13 @@ export class SeguridadLoginComponent implements OnInit {
       recordarme: [''],
     });
   }
-
   public login() {
     this.submitted = true;
-    this.cargando = true;
-
     // stop here if form is invalid
     if (this.formGroup.invalid) {
-      this.cargando = false;
       return;
     }
+    this.cargando = true;
 
     this.user.email = this.formGroup.get('email').value;
     this.user.password = this.formGroup.get('password').value;

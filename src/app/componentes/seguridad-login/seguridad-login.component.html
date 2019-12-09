@@ -1,4 +1,4 @@
-<section class="login-block">
+<section class="login-block" >
   <!-- Container-fluid starts -->
   <div class="container">
     <div class="row">
@@ -23,8 +23,8 @@
               <div class="form-group">
                 <input formControlName="email" type="email" class="form-control " [ngClass]="{ 'form-control-danger': submitted && f.email.errors }" placeholder="Correo Electrónico" >
                 <div  *ngIf="submitted && f.email.errors" >
-                  <div class="text-danger col-form-label" *ngIf="f.email.errors.required">Email es obligatorio</div>
-                  <div class="text-danger col-form-label" *ngIf="f.email.errors.email">No es una direccion de Email valida</div>
+                  <div class="text-danger col-form-label" *ngIf="f.email.errors.required">El correo electrónico es obligatorio</div>
+                  <div class="text-danger col-form-label" *ngIf="f.email.errors.email">No es un correo electrónico valido</div>
                 </div>
 
               </div>
@@ -37,11 +37,7 @@
               <div class="row m-t-25 text-left">
                 <div class="col-12">
                   <div class="checkbox-fade fade-in-primary d-">
-                    <label>
-                      <input type="checkbox" formControlName="recordarme" value="false">
-                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                      <span class="text-inverse">Recordarme</span>
-                    </label>
+
                   </div>
                   <div class="forgot-phone text-right f-right">
                     <a routerLink="../reset-contrasenna" class="text-right f-w-600">Olvidó su Contraseña</a>
@@ -56,7 +52,7 @@
                     <div class="circ3"></div>
                     <div class="circ4"></div>
                   </div>
-                  <button *ngIf="!cargando" (click)="login()" [disabled]="formGroup.invalid && submitted" type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Iniciar Sección</button>
+                  <button   *ngIf="!cargando" (click)="login()" [disabled]="formGroup.invalid && submitted" type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Iniciar Sección</button>
                 </div>
               </div>
 
@@ -64,7 +60,7 @@
               <div class="row">
                 <div class="col-md-10">
                   <p class="text-inverse text-left m-b-0">Sistema de Evalución de Cursos de Postgrado.</p>
-                  <p class="text-inverse text-left"><a routerLink=""  ><b class="f-w-600">Centro Nacional de Educacion a Distancia</b></a></p>
+                  <p class="text-inverse text-left"><a routerLink=""  ><b class="f-w-600">Centro Nacional de Educación a Distancia</b></a></p>
                 </div>
                 <div class="col-md-2">
                   <img src="./assets/assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
