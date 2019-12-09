@@ -112,11 +112,11 @@
 
                       <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.email.errors }">
                         <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                        <input type="text" formControlName="email" class="form-control" placeholder="Correo Electronico"  />
+                        <input type="text" formControlName="email" class="form-control" placeholder="Correo Electrónico"  />
                       </div>
                       <div  *ngIf="submitted && f.email.errors" >
-                        <div class="text-danger" *ngIf="f.email.errors.required">Email es obligatorio</div>
-                        <div class="text-danger" *ngIf="f.email.errors.email">No es una direccion de Email valida</div>
+                        <div class="text-danger" *ngIf="f.email.errors.required">El correo electrónico es obligatorio</div>
+                        <div class="text-danger" *ngIf="f.email.errors.email">No es un correo electrónico valido</div>
                       </div>
 
 

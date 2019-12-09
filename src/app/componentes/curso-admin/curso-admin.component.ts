@@ -23,7 +23,7 @@ export class CursoAdminComponent implements OnInit {
   }
   eliminar(cursoId) {
     Swal.fire({
-      title: '¿Usted esta Seguro?',
+      title: '¿Usted está Seguro?',
       text: 'Eliminar el curso selecionado de manera permanente',
       icon: 'error',
       showCancelButton: true,
@@ -39,7 +39,7 @@ export class CursoAdminComponent implements OnInit {
                   this.cursos.splice(i, 1);
                   Swal.fire(
                     'Eliminar Curso',
-                    'Se elimino correctamente',
+                    'Se eliminó correctamente',
                     'success'
                   );
                 }

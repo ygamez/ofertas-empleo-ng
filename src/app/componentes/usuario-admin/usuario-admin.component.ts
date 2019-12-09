@@ -32,7 +32,7 @@ export class UsuarioAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.updateData('Listado de todos los usuarios registrado en la aplicación');
+    this.dataService.updateData('Listado de todos los usuarios registrados en la aplicación');
     this.getUsuario();
     this.formGroup.valueChanges.subscribe(val => {
       this.submitted = true;
@@ -83,7 +83,7 @@ export class UsuarioAdminComponent implements OnInit {
                 $('#large-Modal').modal('hide');
                 Swal.fire(
                   'Registrar Usuario',
-                  'se registro correctamente el nuevo usuario',
+                  'se registró correctamente el nuevo usuario',
                   'success'
                 );
               } else {
@@ -98,7 +98,7 @@ export class UsuarioAdminComponent implements OnInit {
   get f() { return this.formGroup.controls; }
   eliminar(userId) {
     Swal.fire({
-      title: '¿Usted esta Seguro?',
+      title: '¿Usted está Seguro?',
       text: 'Eliminar el usuario selecionado de manera permanente',
       icon: 'error',
       showCancelButton: true,
@@ -114,7 +114,7 @@ export class UsuarioAdminComponent implements OnInit {
                   this.usuarios.splice(i, 1);
                   Swal.fire(
                     'Eliminar Usuario',
-                    'Se elimino correctamente',
+                    'Se eliminó correctamente',
                     'success'
                   );
                 }
