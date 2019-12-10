@@ -10,8 +10,10 @@ import Swal from 'sweetalert2';
 })
 export class AplicacionInicioComponent implements OnInit {
 public identity;
+private lastUpdated: Date;
   constructor(private usuarioService: UsuarioService, private router: Router) {
     this.identity = usuarioService.getIdentity();
+    this.lastUpdated = new Date();
   }
 
   ngOnInit() {

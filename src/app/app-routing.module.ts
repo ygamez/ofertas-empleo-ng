@@ -20,6 +20,7 @@ import {UsuarioGuardService} from './servicios/usuario-guard.service';
 import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
 import {UsuarioAdminAccessService} from './servicios/usuario-admin-access.service';
 import {ReportesInicioComponent} from './componentes/reportes-inicio/reportes-inicio.component';
+import {EvaluacionInicioComponent} from './componentes/evaluacion-inicio/evaluacion-inicio.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
         ]
       },
       {path: 'reportes', component: ReportesInicioComponent},
+      {path: 'evaluaciones', component: EvaluacionInicioComponent},
     ]
   },
   {

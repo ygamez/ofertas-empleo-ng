@@ -24,7 +24,7 @@ export class UsuarioRedictAutService implements CanActivate {
       this.router.navigate(['']);
       Swal.fire(
         'Acceso Restringido',
-        'usted ya se encuatra autenticado por eso no puede acceder a la pagina de inicio de seccion',
+        'usted ya se encuatra autenticado por eso no puede acceder a esta funcionalidad en estos momentos',
         'error'
       );
       return false;
