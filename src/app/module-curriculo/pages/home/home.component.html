@@ -1,0 +1,60 @@
+
+<mat-sidenav-container fullscreen>
+    
+    <mat-sidenav #sidenav mode = "push">
+        
+            <mat-toolbar>
+                
+                <span>Menú</span>
+                <span class="spacer"></span>
+                <button mat-icon-button
+                (click)=sidenav.toggle()>
+                <mat-icon>menu</mat-icon>
+            </button>
+            </mat-toolbar>
+        
+            <mat-nav-list role="list">
+                
+                <a  mat-list-item 
+                routerLink = "./curriculo" 
+                (click)=sidenav.toggle()>
+                <mat-icon mat-list-icon>label</mat-icon>
+                <samp> Currículo</samp> 
+                </a>
+
+                <a  mat-list-item 
+                routerLink = "./agregar" 
+                (click)=sidenav.toggle()>
+                <mat-icon mat-list-icon>add</mat-icon>
+                <samp> Añadir </samp>
+                </a>  
+                <a  mat-list-item 
+                    routerLink = "./buscar" 
+                    (click)=sidenav.toggle()>
+                    <mat-icon mat-list-icon>search</mat-icon>
+                    <samp> Buscar Currículos</samp>
+                </a>
+            </mat-nav-list>
+                
+    </mat-sidenav>
+        
+    <mat-toolbar color = "primary" style="background-color: #58a5f0;">
+
+        <button mat-icon-button
+            (click)=sidenav.toggle()>
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="spacer"></span>
+
+        <span> {{ usuario.email |lowercase }} </span>
+
+        <button mat-button
+        (click)= atras()>
+            Atras
+        <mat-icon>label</mat-icon>
+        </button>
+
+    </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-container>

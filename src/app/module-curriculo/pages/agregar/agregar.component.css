@@ -1,0 +1,27 @@
+.container .mat-form-field + .mat-form-field {
+    margin-left: 1px; 
+    min-width: 150px;
+    width: 100%;
+    border: 4px solid #393939; 
+    width: 100%;
+  } 
+
+  .example-form {
+    min-width: 10px;
+    /* max-width: 500px;  */
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .example-full-width {
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 50px;
+  } 
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+  }
+  

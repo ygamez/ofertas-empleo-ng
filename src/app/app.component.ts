@@ -8,25 +8,25 @@ import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sistema-frontend';
-  constructor(private loadingBar: SlimLoadingBarService, private router: Router) {
-    this.router.events.subscribe((event: Event) => {
-     // this.navigationInterceptor(event);
-    });
-  }
+  title = 'TrabajarEnCuba';
+  constructor(private router: Router) {
+  //   this.router.events.subscribe((event: Event) => {
+  //    this.navigationInterceptor(event);
+  //   });
+  // }
 
-  private navigationInterceptor(event: Event): void {
-    if (event instanceof NavigationStart) {
-      this.loadingBar.start();
-    }
-    if (event instanceof NavigationEnd) {
-      this.loadingBar.complete();
-    }
-    if (event instanceof NavigationCancel) {
-      this.loadingBar.stop();
-    }
-    if (event instanceof NavigationError) {
-      this.loadingBar.stop();
-    }
-  }
+  // private navigationInterceptor(event: Event): void {
+  //   if (event instanceof NavigationStart) {
+  //     this.loadingBar.start();
+  //   }
+  //   if (event instanceof NavigationEnd) {
+  //     this.loadingBar.complete();
+  //   }
+  //   if (event instanceof NavigationCancel) {
+  //     this.loadingBar.stop();
+  //   }
+  //   if (event instanceof NavigationError) {
+  //     this.loadingBar.stop();
+  //   }
+   }
 }

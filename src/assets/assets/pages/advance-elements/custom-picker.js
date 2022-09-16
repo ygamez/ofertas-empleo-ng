@@ -35,6 +35,28 @@ $(document).ready(function(){
             previous: "icofont icofont-rounded-left"
         }
     });
+    $('#hora-inicio').datetimepicker({
+        format: 'LT',
+        icons: {
+            time: "icofont icofont-clock-time",
+            date: "icofont icofont-ui-calendar",
+            up: "icofont icofont-rounded-up",
+            down: "icofont icofont-rounded-down",
+            next: "icofont icofont-rounded-right",
+            previous: "icofont icofont-rounded-left"
+        }
+    });
+    $('#hora-fin').datetimepicker({
+        format: 'LT',
+        icons: {
+            time: "icofont icofont-clock-time",
+            date: "icofont icofont-ui-calendar",
+            up: "icofont icofont-rounded-up",
+            down: "icofont icofont-rounded-down",
+            next: "icofont icofont-rounded-right",
+            previous: "icofont icofont-rounded-left"
+        }
+    });
     // No Icon (input field only)
     $('#datetimepicker4').datetimepicker({
         icons: {
@@ -275,6 +297,18 @@ $("#dropper-max-year").dateDropper( {
         dropBorder: "1px solid #1abc9c",
         maxYear: "2020"
     }),
+$("#fecha-inicio").dateDropper( {
+        dropWidth: 200,      
+        dropPrimaryColor: "#1abc9c", 
+        dropBorder: "1px solid #1abc9c",
+        maxYear: "2025"
+    }),
+$("#fecha-final").dateDropper( {
+        dropWidth: 200,        
+        dropPrimaryColor: "#1abc9c", 
+        dropBorder: "1px solid #1abc9c",
+        maxYear: "2025"
+    }),
 $("#dropper-min-year").dateDropper( {
         dropWidth: 200,       
         dropPrimaryColor: "#1abc9c", 
@@ -354,20 +388,7 @@ function change_checkbox_color() {
         });
     });
 }
-// Color picker
-$("#custom").spectrum({
-    color: "#f00"
-});
-$("#flat").spectrum({
-    flat: true,
-    showInput: true
-});
-$("#flatClearable").spectrum({
-    flat: true,
-    showInput: true,
-    allowEmpty: true
-});
-// Color picker js end
+
 
 // Mini-color js start
 $('.demo').each( function() {

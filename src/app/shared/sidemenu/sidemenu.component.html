@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light navbar-default" role="navigation" style="background-color: #58a5f0;">
+    <img style="height: 50px" src="./assets/assets/images/logo.png" alt="TrabajarEnCuba" onclick="location.href='inicio'">
+    <h4 style="color: #fff;">TrabajarEnCuba</h4>
+         <button style="color: #fff;" mat-button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <mat-icon>list</mat-icon>
+         </button>
+         <div style="text-align: center;" class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto text-center">
+              <li>
+                <mat-form-field style="color: #fff;" class="text-center" appearance="standard">
+                  <mat-label style="color: #fff;">Insertar ticket de solicitud</mat-label>
+                  <input style="color: #fff;"  matInput type="text">
+                </mat-form-field>  
+                  <button  mat-mini-fab color="primary" aria-label="Buscar">
+                    <mat-icon>search</mat-icon>
+                  </button>
+               </li>
+               <mat-divider></mat-divider>
+             </ul>
+             <ul class="navbar-nav my-2 my-lg-0">
+              
+                 <li class="nav-item">
+                  <a mat-button fxHide.xs style="color: #fff;" href="curriculo">Currículo</a>
+                 </li>
+                 <mat-divider></mat-divider>
+                 <li class="nav-item" >
+                  <a mat-button fxHide.xs style="color: #fff;" href="https://www.mtss.gob.cu/" >Empleador</a>
+
+                 </li>
+                 <mat-divider></mat-divider>
+                 <li class="nav-item">
+                  <a mat-button fxHide.xs style="color: #fff;" href="https://www.apklis.cu/review/com.example.trabajarencuba.trabajarencuba/"><mat-icon>phone_android</mat-icon> APK</a>
+
+                 </li>
+                 <mat-divider></mat-divider>
+                 <li class="nav-item">  
+                     <a mat-button fxHide.xs style="color: #fff;" href="https://www.mtss.gob.cu/">Nuestro Ministerio</a>
+                 </li>
+                 <mat-divider></mat-divider>
+                 <li class="nav-item">
+                  <a mat-button [matMenuTriggerFor]="menu"><mat-icon style="color: #fff;">person</mat-icon></a>
+                 </li>
+                 <mat-divider></mat-divider>
+                 <li class="nav-item">
+                  <mat-menu #menu="matMenu">
+                    <ng-container >
+                    <a mat-button data-toggle="modal" data-target="#sign-in"><mat-icon>login</mat-icon>Autenticarse</a>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                    <ng-container >
+                    <a mat-button onclick="location.href='/registro'"> <mat-icon>person_add_alt_1</mat-icon>Registrarse</a>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                  <ng-container>
+                    <a mat-button > <mat-icon>logout</mat-icon>Cerrar Sesion</a>
+                  </ng-container>
+                  </mat-menu>
+                 </li>
+                 <mat-divider></mat-divider>
+             </ul>
+         </div>
+ </nav>

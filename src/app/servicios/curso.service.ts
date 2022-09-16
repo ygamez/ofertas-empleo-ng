@@ -12,31 +12,29 @@ export class CursoService {
   constructor(public http: HttpClient) {
     this.url = GLOBAL.url;
   }
-  getCursos(): Observable<any> {
+  getMessages(): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(this.url + 'curso/todos', {headers});
+    return this.http.get(this.url + 'api/my-messages', {headers});
   }
-  pdfCurso(): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/pdf');
-    return this.http.get(this.url + 'reportes/evaluacion-curso/yamir', {responseType: 'blob', headers: {Accept: 'application/pdf'}});
-  }
-  newCurso(curso: Curso): Observable<any> {
+  newMessage(curso: Curso): Observable<any> {
     const params = JSON.stringify(curso);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + 'curso/nuevo', params, {headers});
+    return this.http.post(this.url + 'api/message', params, {headers});
   }
 
-  updateCurso(curso: Curso): Observable<any> {
+  updateMessage(curso: Curso): Observable<any> {
     const params = JSON.stringify(curso);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(this.url + 'curso/actualizar', params, {headers});
   }
 
-  deleteCurso(id: number): Observable<any> {
+  deleteMessage(id: number): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.delete(this.url + 'curso/eliminar/' + id, {headers});
+    console.log('servicio'+'' +id)
+    return this.http.delete(this.url + 'api/eliminar/' + id, {headers});
+
   }
-  getCurso(id: number): Observable<any> {
+  getMessage(id: number): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + 'curso/obtener/' + id, {headers});
   }

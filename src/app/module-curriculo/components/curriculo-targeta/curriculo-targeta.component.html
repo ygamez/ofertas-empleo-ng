@@ -1,0 +1,54 @@
+
+<mat-card class="example-card"> 
+        
+    <mat-card-header>
+        <mat-card-title>Curriculo Profecional </mat-card-title>            
+
+    </mat-card-header>
+
+    <mat-card-title-group>
+        <img  mat-card-image src="../../../../assets/img/image2.jpg" >
+    </mat-card-title-group>
+
+    <mat-card-content>
+        <h4> Perfil:  </h4>
+        <p>
+            <strong> {{ curriculo.nombre }} </strong>
+
+        </p>
+        <h4> Educación:  </h4>
+            <P>
+                <strong> {{curriculo.educacion}} </strong>  <!-- {{curriculo.ActResumen}}-->
+            </P>
+        <h4> Experiencia Laboral:  </h4>
+        <P>
+            <strong> {{curriculo.experiencialaboral}}</strong>  <!-- {{curriculo.ActResumen}}-->
+        </P>
+        <!-- <div class="example-container"
+            fxFlex  > -->
+            
+            
+           <h4> Contacto:  </h4>
+           <strong> Telefono: {{curriculo.telefono  }} </strong> 
+           <br>
+           <strong> Correo: </strong> {{curriculo.correo }}
+
+       <!-- </div> -->
+        
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button 
+                color="warn"
+                routerLink = "/curriculo/curriculo"> 
+            Leer más...
+        </button>
+        <button mat-button color="info"
+                [routerLink] = "['/curriculo/editar', curriculo.id ]"> 
+            Editar
+        </button>
+    </mat-card-actions>
+
+
+</mat-card>

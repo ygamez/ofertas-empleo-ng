@@ -1,0 +1,20 @@
+<!-- <h1 align ="center">Datos de la persona</h1> -->
+
+<mat-divider></mat-divider>
+<br>
+
+
+
+<div fxLayout = "row wrap" 
+     fxLayoutAlign ="center" 
+     >
+     <div *ngIf="curriculo != null" 
+     class="alert alert-danger"> 
+     Usted no tiene currículo creado. Para crear uno vaya al menú.. Añadir
+   </div>
+<div fxFlex="60" *ngFor="let curriculo of curriculo" >
+  
+  <app-curriculo-targeta [curriculo] = "curriculo" ></app-curriculo-targeta>
+
+</div>
+</div>

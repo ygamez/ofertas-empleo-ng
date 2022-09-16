@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Está a punto de eliminar el curriculo</h1>
+        <hr>
+<div mat-dialog-content>
+  <p>Está seguro ?</p>
+</div>
+     <br>
+<div mat-dialog-actions>  
+  <button mat-button 
+          [mat-dialog-close]="" 
+          cdkFocusInitial
+          color="warn"
+          (click)="borarCurriculo()">
+          Si, eliminar
+        </button>
+    <button mat-button 
+          [mat-dialog-close]="" 
+          (click)="onNoClick()">
+          Cancelar
+        </button>
+</div>

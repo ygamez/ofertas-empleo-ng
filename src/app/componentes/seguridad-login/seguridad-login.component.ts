@@ -20,9 +20,9 @@ export class SeguridadLoginComponent implements OnInit {
   public cargando = false;
   constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService, private router: Router) {
     this.buildForm();
-    this.user = new Usuario(null, '', '',
+    /*this.user = new Usuario(null, '', '',
     '', '', '' , '',
-    new Date().toString(), new Date().toString(), '');
+    new Date().toString(), new Date().toString(), '');*/
   }
 
   ngOnInit() {
@@ -59,9 +59,9 @@ export class SeguridadLoginComponent implements OnInit {
 
     this.usuarioService.login(this.user).subscribe(
       response => {
-        this.identity = response.usuario;
+        this.identity = response.usuarioDb;
 
-        if (this.identity && this.identity.id) {
+        if (this.identity && this.identity._id) {
 
           // Persistir datos del usuario en el LocalStorage
           localStorage.setItem('identity', JSON.stringify(this.identity));
@@ -106,7 +106,7 @@ export class SeguridadLoginComponent implements OnInit {
       error => {
         // this.status = 'error';
         this.cargando = false;
-        console.log( <any> error);
+        console.log( error as any);
       }
     );
   }

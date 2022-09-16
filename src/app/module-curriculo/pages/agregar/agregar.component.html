@@ -1,0 +1,91 @@
+ <div>
+  
+ </div>
+ <div class="container" >
+      <h1 > Datos del currículo </h1>
+        <mat-divider></mat-divider>
+
+  </div>
+<div fxLayout="column" 
+      fxLayoutGap="20px"   >
+
+     <div class="example-form" fxFlex="100" >
+        <mat-list-item role="listitem">Perfil:</mat-list-item>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre...</mat-label>
+          <input matInput                 
+                type="text"
+                [(ngModel)]="curriculo.nombre"
+                >
+        </mat-form-field>
+    </div>
+
+     <div class="example-form" fxFlex="100" >
+        <mat-list-item role="listitem">Educación:</mat-list-item>
+        <mat-form-field class="example-full-width" >
+            <mat-label>Escriba...</mat-label>
+            <textarea matInput 
+                      placeholder="Aqui usted escribirá sus titulos,diplomas o carrera de graduado, centro de estudios..."
+                      [(ngModel)]="curriculo.educacion"></textarea>
+          </mat-form-field>
+    </div>
+
+     <div class="example-form" fxFlex="100" >
+        <mat-list-item role="listitem">Experiencia Laboral:</mat-list-item>
+        <mat-form-field class="example-full-width" >
+            <mat-label>Escriba...</mat-label>
+            <textarea matInput placeholder="Aqui usted escribirá su exeriencia laboral..."
+            [(ngModel)]="curriculo.experiencialaboral"></textarea>
+          </mat-form-field>
+    </div>
+     <div   class="example-form" 
+            fxFlex="100" >
+            <mat-list-item role="listitem">Contacto:</mat-list-item>
+          <div  class="example-container"
+                fxLayoutGap="20px"  
+                >
+            <mat-form-field >
+              <mat-label>Escriba su correo</mat-label>
+               <input   matInput 
+                       placeholder="correo@ejemplo.cu" 
+                       type="email"
+                       [(ngModel)]="curriculo.correo">
+              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field >
+              <mat-label>Entre su Telefono</mat-label>
+              <input   matInput 
+                       placeholder="correo@ejemplo.cu" 
+                       type="text"
+                       [(ngModel)]="curriculo.telefono">
+              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div  fxLayout
+                class="example-button-container"
+                fxLayout.xs="column">
+
+                <button mat-raised-button
+                  color="primary"
+                  (click)="guardar()" >
+                  <mat-icon>edit</mat-icon>
+                  Guardar
+                </button>
+
+                <span class="spacer"></span>
+
+                <button *ngIf="curriculo.id"
+                        mat-raised-button 
+                        color="warn"
+                        (click)="borrar()">
+                  <mat-icon>delete_outline</mat-icon>
+                  Borrar
+                </button>
+
+            
+                        
+          </div>
+    </div>
+
+</div>
+

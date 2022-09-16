@@ -1,38 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+// // me salia mal tuve q importar el css del calendar a mi style.css
+import { OnInit } from '@angular/core';
+import {EncuestaService} from '../../servicios/encuesta.service';
+import {Encuesta} from '../../modelos/encuesta';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewChild,
+  TemplateRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-evaluacion-inicio',
   templateUrl: './evaluacion-inicio.component.html',
-  styleUrls: ['./evaluacion-inicio.component.css']
+  styleUrls: ['./evaluacion-inicio.component.css'],
 })
-export class EvaluacionInicioComponent implements OnInit {
-  skillsForm: FormGroup;
-  constructor(private fb: FormBuilder) {
-    this.skillsForm = this.fb.group({
-      name: '',
-      skills: this.fb.array([]) ,
-    });
-  }
+export class EvaluacionInicioComponent implements OnInit{
+constructor() {
 
-  ngOnInit() {
-  }
-  get skills(): FormArray {
-    return this.skillsForm.get('skills') as FormArray;
-  }
-  newSkill(): FormGroup {
-    return this.fb.group({
-      skill: '',
-      exp: '',
-    });
-  }
-  addSkills() {
-    this.skills.push(this.newSkill());
-  }
-  removeSkill(i: number) {
-    this.skills.removeAt(i);
-  }
-  onSubmit() {
-    console.log(this.skillsForm.value);
-  }
-  }
+}
+
+ngOnInit() {
+
+}
+
+
+
+}

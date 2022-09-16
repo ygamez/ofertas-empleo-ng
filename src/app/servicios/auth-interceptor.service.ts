@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-import { catchError, filter, take, switchMap } from "rxjs/operators";
+import { catchError, filter, take, switchMap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,6 @@ export class AuthInterceptorService implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    console.log('Interception In Progress');
     const token: string = localStorage.getItem('token');
     req = req.clone({ headers: req.headers.set('Authorization', '' + token) });
     req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });

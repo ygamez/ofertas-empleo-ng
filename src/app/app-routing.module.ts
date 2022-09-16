@@ -6,74 +6,38 @@ import {SeguridadResetPasswordComponent} from './componentes/seguridad-reset-pas
 import {AplicacionInicioComponent} from './componentes/aplicacion-inicio/aplicacion-inicio.component';
 import {NotFoundComponent} from './componentes/not-found/not-found.component';
 import {UsuarioInicioComponent} from './componentes/usuario-inicio/usuario-inicio.component';
-import {UsuarioAdminComponent} from './componentes/usuario-admin/usuario-admin.component';
 import {UsuarioDetallesComponent} from './componentes/usuario-detalles/usuario-detalles.component';
 import {UsuarioEditarComponent} from './componentes/usuario-editar/usuario-editar.component';
 import {CategoriaInicioComponent} from './componentes/categoria-inicio/categoria-inicio.component';
-import {CategoriaAdminComponent} from './componentes/categoria-admin/categoria-admin.component';
-import {CursoInicioComponent} from './componentes/curso-inicio/curso-inicio.component';
-import {CursoAdminComponent} from './componentes/curso-admin/curso-admin.component';
-import {CursoNuevoComponent} from './componentes/curso-nuevo/curso-nuevo.component';
-import {CursoDetallesComponent} from './componentes/curso-detalles/curso-detalles.component';
-import {CursoEditarComponent} from './componentes/curso-editar/curso-editar.component';
 import {UsuarioGuardService} from './servicios/usuario-guard.service';
 import {UsuarioRedictAutService} from './servicios/usuario-redict-aut.service';
 import {UsuarioAdminAccessService} from './servicios/usuario-admin-access.service';
-import {ReportesInicioComponent} from './componentes/reportes-inicio/reportes-inicio.component';
 import {EvaluacionInicioComponent} from './componentes/evaluacion-inicio/evaluacion-inicio.component';
+import {InicioComponent} from './componentes/inicio/inicio.component';
+import {UsuarioRegistroComponent} from './componentes/usuario-registro/usuario-registro.component';
+import {PararutaidusuarioService} from './servicios/pararutaidusuario.service';
 
 
 const routes: Routes = [
   {
-    path: 'seguridad', component: SeguridadInicioComponent, canActivate: [UsuarioRedictAutService],
+    path: '', component: AplicacionInicioComponent,
     children: [
-      { path: 'inicio-seccion', component: SeguridadLoginComponent, },
-      { path: 'reset-contrasenna', component: SeguridadResetPasswordComponent },
+      { path: 'registro', component: UsuarioRegistroComponent, canActivate: [UsuarioAdminAccessService] },
+      { path: 'inicio', component: InicioComponent},
+      { path: 'misofertas', component: CategoriaInicioComponent,  },
+      { path: 'configuracion/usuario', component: UsuarioInicioComponent, canActivate: [UsuarioGuardService],
+        children: [
+          { path: 'detalles/:id', component: UsuarioDetallesComponent, canActivate: [UsuarioGuardService] },
+          { path: 'editar/:id', component: UsuarioEditarComponent, canActivate: [UsuarioGuardService]},
+        ]
+      },
+      {path: 'curriculo', component: EvaluacionInicioComponent, canActivate: [UsuarioGuardService]},
     ]
   },
-  {
-    path: '', component: AplicacionInicioComponent, canActivate: [UsuarioGuardService],
-    children: [
-      {
-        path: 'configuracion/usuario', component: UsuarioInicioComponent, canActivate: [UsuarioGuardService, UsuarioAdminAccessService],
-        children: [
-          { path: '', component: UsuarioAdminComponent, },
-          { path: 'detalles/:id', component: UsuarioDetallesComponent, },
-          { path: 'editar/:id', component: UsuarioEditarComponent, },
-        ]
-      },
-      {
-        path: 'configuracion/categoria', component: CategoriaInicioComponent,
-        children: [
-          { path: '', component: CategoriaAdminComponent, },
-          { path: 'detalles/:id', component: UsuarioDetallesComponent, },
-          { path: 'editar/:id', component: UsuarioEditarComponent, },
-        ]
-      },
-      {
-        path: 'curso', component: CursoInicioComponent,
-        children: [
-          { path: '', component: CursoAdminComponent, },
-          { path: 'detalles/:id', component: CursoDetallesComponent, },
-          { path: 'editar/:id', component: CursoEditarComponent, },
-          { path: 'nuevo', component: CursoNuevoComponent, },
-        ]
-      },
-      {path: 'reportes', component: ReportesInicioComponent},
-      {path: 'evaluaciones', component: EvaluacionInicioComponent},
-    ]
-  },
-  {
-    path: 'pagina-no-encontrada', component: NotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'pagina-no-encontrada'
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

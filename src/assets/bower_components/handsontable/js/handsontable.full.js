@@ -1977,7 +1977,7 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
         while(index--)$instance[ADDER](index, index);
         return !$instance.has(-0);
       });
-    if(!ACCEPT_ITERABLES){ 
+    if(!ACCEPT_ITERABLES){
       C = wrapper(function(target, iterable){
         anInstance(target, C, NAME);
         var that = inheritIfRequired(new Base, target, C);
@@ -18349,7 +18349,7 @@ HandsontableEditor.prototype.open = function () {
     this.htEditor.destroy();
   }
   // Construct and initialise a new Handsontable
-  this.htEditor = new this.instance.constructor(this.htContainer, this.htOptions);
+  this.htEditor = new this.instance.Evento(this.htContainer, this.htOptions);
   this.htEditor.init();
 
   if (this.cellProperties.strict) {
@@ -44163,7 +44163,7 @@ webpackContext.id = 418;
             if (typeof this._o.onDraw === 'function') {
                 this._o.onDraw(this);
             }
-            
+
             if (opts.bound) {
                 // let the screen reader user know to use arrow keys
                 opts.field.setAttribute('aria-label', 'Use the arrow keys to pick a date');

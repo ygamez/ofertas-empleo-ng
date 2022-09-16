@@ -1,0 +1,250 @@
+<div>
+  <div class="pcoded-container navbar-wrapper">
+    <div class="pcoded-main-container" >
+      <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+          <div class="pcoded-inner-content">
+            <!-- Main-body start -->
+            <div>
+              <div class="page-wrapper">
+                <!-- Page body start -->
+                <div >
+                  <div>
+                    <div class="position-relative overflow-hidden p-1 p-md-5 m-md-3 text-center bg-light">
+                      <div class="col-md-6 p-lg-6 mx-auto my-0">
+                        <img class="imagen" style="height: 180px;" src="./assets/assets/images/logo.png" alt="TrabajarEnCuba">
+                        <h2 class="display-8 font-weight-normal">Bienvenido a TrabajarEnCuba</h2>
+                        <div class="position-relative  text-center">
+                          <button *ngIf="identity===null" onclick="location.href='/registro'" mat-raised-button style="background-color:#58a5f0;" (click)="ofertas(municipioseleccionado)">COMENZAR</button>
+                         </div>
+                      </div>
+                    </div>
+                    <form [formGroup]="formGroup"></form>
+                    <mat-form-field style="width: 100%;" appearance="legacy">
+                      <mat-label >Seleccione una forma de gestión</mat-label>
+                    <mat-select  [(ngModel)]="formagestionseleccionado">
+                      <mat-option value="">Seleccione la forma de gestión</mat-option>
+                      <mat-option value="3">Entidad Estatal</mat-option>
+                      <!-- <mat-option value="1">Trabajo por Cuenta Propia</mat-option> -->
+                    </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;" appearance="legacy">
+                      <mat-label>Seleccione una provincia</mat-label>
+                    <mat-select [(ngModel)]="opcionSeleccionado" (selectionChange)="seleccionarmunicipio(opcionSeleccionado)">
+                      <mat-option value="">Seleccione la provincia</mat-option>
+                      <mat-option *ngFor="let c of countries" [value]="c.id">{{c.nombre}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                     <mat-form-field *ngIf="opcionSeleccionado != '0'" style="width: 100%;" appearance="legacy">
+                      <mat-label>Seleccione un municipio</mat-label>
+                    <mat-select  [(ngModel)]="municipioseleccionado">
+                      <mat-option value="">Seleccione el municipio</mat-option>
+                      <mat-option *ngFor="let c of municipios" [value]="c.id">{{c.nombre}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;" appearance="legacy">
+                      <mat-label>Seleccione un nivel escolar</mat-label>
+                    <mat-select [(ngModel)]="nivelescolarseleccionado">
+                      <mat-option value="">Seleccione el nivel escolar</mat-option>
+                      <mat-option value="3">9no grado</mat-option>
+                      <mat-option value="4">12mo grado</mat-option>
+                      <mat-option value="5">Obrero Calificado</mat-option>
+                      <mat-option value="6">Técnico Medio</mat-option>
+                      <mat-option value="7">Universitario</mat-option>
+                    </mat-select>
+                    </mat-form-field>                 
+                    <mat-form-field style="width: 100%;" appearance="legacy">
+                      <mat-label>Salario mínimo</mat-label>
+                      <input [(ngModel)]="salarioseleccionado" matInput type="number" min="2100">
+                      <span matSuffix>CUP</span>
+                    </mat-form-field>  
+                    <mat-form-field style="width: 100%;" appearance="legacy">
+                      <mat-label>¿Qué buscas? (Palabras Claves)</mat-label>
+                      <input [(ngModel)]="palabraseleccionado" matInput type="text">
+                    </mat-form-field>  
+                    <div class="position-relative  text-center">
+                       <button mat-raised-button style="background-color: #58a5f0;" (click)="ofertas(municipioseleccionado)"> <mat-icon >search</mat-icon> Buscar</button>
+                      </div>
+                      <div *ngIf="cargando"  class="preloader3 btn btn-md btn-block text-center m-b-20" style="height: 25px">
+                        <mat-spinner style="color: skyblue;"></mat-spinner>
+                      </div>
+                    
+                    
+                    <div *ngFor="let c of ofertaslist">
+                      <br>
+                      <mat-accordion>
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            {{c.cargo}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                           <p>Salario: {{c.salario}} CUP</p>
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>   Entidad: {{c.entidad}}</p>
+                        <p>Organismo: {{c.organismo}}</p>
+                        <p>Nivel escolar: {{c.nivelEscolar}}</p>
+                        <p>Actividad: {{c.actividad}}</p>
+                        <p>Observaciones: {{c.observaciones}}</p>
+                        <p>Correo: {{c.correo_entidad}}</p>
+                        <p>Dirección: {{c.direccion_entidad}}</p>
+                        <p>Teléfono: {{c.telefono_entidad}}</p>
+                        <p>Teléfono: {{c.fecha_registro}}</p>
+
+
+                        <button *ngIf="identity!=null" data-toggle="modal" data-target="#solicitaroferta" mat-raised-button color="primary">solicitar oferta</button>
+                        
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                    
+                    
+                  </div>
+                  <br>
+                 <div *ngIf="ofertaslist.length != 0">
+                  <mat-paginator [length]="total"
+                                 [pageSize]="pageSize"
+                                 [pageSizeOptions]="pageSizeOptions"
+                                 (page)="getServerData($event)"
+                                 [pageIndex]="pageIndex">
+                  </mat-paginator>
+              
+                   </div> 
+                   
+
+<br><br><br>
+<h2 class="display-5 font-weight-normal text-center">Estadística</h2>
+<br><br>
+                      <div class="row">
+                        
+                        <div class="col-md-4 col-xl-3">
+                          <div class="card" style="background-color: rgb(71, 218, 218);">
+                            <div class="card-block">
+                              <h5 class="m-b-20">Currículos</h5>
+                              <h4 class="text-right"><span>486</span><mat-icon>description</mat-icon></h4>
+                              <p class="m-b-0">9no grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">12mo grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Obrero Calificado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Técnico Medio<span class="f-right">351</span></p>
+                              <p class="m-b-0">Universitario<span class="f-right">351</span></p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 col-xl-3">
+                          <div class="card" style="background-color: rgb(81, 182, 186);">
+                            <div class="card-block">
+                              <h5 class="m-b-20">Ofertas de Empleo</h5>
+                              <h4 class="text-right"><span>486</span><mat-icon>work</mat-icon></h4>
+                              <p class="m-b-0">9no grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">12mo grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Obrero Calificado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Técnico Medio<span class="f-right">351</span></p>
+                              <p class="m-b-0">Universitario<span class="f-right">351</span></p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 col-xl-3">
+                          <div class="card" style="background-color: rgb(75, 200, 238);">
+                            <div class="card-block">
+                              <h5 class="m-b-20">Solicitudes de Empleo</h5>
+                              <h4 class="text-right"><span>486</span><mat-icon>folder_shared</mat-icon></h4>
+                              <p class="m-b-0">9no grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">12mo grado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Obrero Calificado<span class="f-right">351</span></p>
+                              <p class="m-b-0">Técnico Medio<span class="f-right">351</span></p>
+                              <p class="m-b-0">Universitario<span class="f-right">351</span></p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 col-xl-3">
+                          <div class="card" style="background-color: rgb(124, 191, 218);">
+                            <div class="card-block">
+                              <h5 class="m-b-20">Usuarios</h5>
+                              <h4 class="text-right"><span>486</span><mat-icon>people_alt</mat-icon></h4>
+                              <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+<br><br><br>
+                    <h2 class="display-5 font-weight-normal text-center">Oportunidades</h2>
+                    <br><br>
+                    <div class="container marketing">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <img class="rounded-circle" src="../../../assets/img/recursos_Mesa de trabajo 1 copia 7.png" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Ofertas de Trabajo</h2>
+                        <p>Facilita el acceso de las personas a las ofertas laborales disponibles en los sectores estatal y no estatal de la economía, dotarlas de mayor visibilidad y transparencia, así como promover un creciente interés por el trabajo. </p>
+
+                      </div><!-- /.col-lg-4 -->
+                      <div class="col-lg-4">
+                        <img class="rounded-circle" src="../../../assets/img/recursos_Mesa de trabajo 1 copia 12.png" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Currículos</h2>
+                        <p>Entre otras facilidades, permite la introducción de un currículo a aquellos interesados en encontrar empleo y ofrece la posibilidad del envío de comentarios a los desarrolladores, sobre el funcionamiento de la aplicación para su perfeccionamiento.</p>
+                      </div><!-- /.col-lg-4 -->
+                      <div class="col-lg-4">
+                        <img class="rounded-circle" src="../../../assets/img/recursos_Mesa de trabajo 1 copia 4.png" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Empleador</h2>
+                        <p>Los organismos empleadores con representación de todas las provincias del país registran sus ofertas y notifican cuando una plaza deje de estar vacante, para retirarla de la aplicación aspecto que se monitorea desde las direcciones municipales.</p>
+                      </div><!-- /.col-lg-4 -->
+                    </div>
+                    </div>
+                  </div>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- style="z-index: 8000;" -->
+        <div id="solicitaroferta" class="cdk-global-overlay-wrapper" class="modal fade" role="dialog" >
+          <div class="modal-dialog">
+            <div class="login-card card-block login-card-modal">
+              <form class="md-float-material form-material" [formGroup]="formGroupsolicitudoferta">
+                <div class="text-center">
+
+                </div>
+                <div class="auth-box card">
+                  <div class="card-block">
+                    <div class="row m-b-20">
+                      <div class="col-md-12">
+                        <h3 class="text-center">Solicitar Oferta</h3>
+                      </div>
+                    </div>
+                    <div>
+                      <mat-form-field style="width: 100%;">
+                      <input matInput  formControlName="aptitudessolicitante" type="text" placeholder="Aptitudes" >
+                    </mat-form-field>    
+                    </div>
+                    <div class="row m-t-30">
+                      <div class="col-md-12">
+                        <!-- <div *ngIf="cargando"  class="preloader3 btn btn-md btn-block text-center m-b-20" style="height: 25px">
+                          <mat-spinner style="color: skyblue;"></mat-spinner>
+                        </div> -->
+                        <button mat-raised-button style="background-color: #58a5f0;" [disabled]="formGroupsolicitudoferta.invalid && submitted"  (click)="enviarsolicitud()"  type="button" class=" btn-md btn-block waves-effect waves-light text-center m-b-20">Enviar Solicitud</button>
+                     <!---->
+                     <h4>{{ticket.asunto}}</h4>
+                     <p>{{ticket.asunto}}</p>
+                     <p>{{ticket.asunto}}</p>
+                     <p>{{ticket.asunto}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

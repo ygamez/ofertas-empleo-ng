@@ -19,7 +19,7 @@ public stats;
   canActivate() {
     const identity = this.usuarioService.getIdentity();
 
-    if (identity && (identity.role === 'ROLE_ADMIN')) {
+    if (!identity) {
       return true;
     } else {
       this.router.navigate(['']);

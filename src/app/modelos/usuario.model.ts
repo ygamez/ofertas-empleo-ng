@@ -3,15 +3,15 @@ export class Usuario {
   constructor(
     public id: number,
     public nombre: string,
-    public email: string,
+    public apellidos: string,
+    public username: string,
     public password: string,
-    public role: string,
-    public imagen: string,
-    public status: string,
-    public createdAt: string,
-    public updatedAt: string,
-    public gettoken: any		// gettoken no está en la bd
-  ) {
-    // code...
-  }
+    public email: string,
+    public tipousuario: string,
+    public token: string,
+    public fechaexpiracion: number,
+    public fecharegistro?: string,
+
+  ) {}
 }
+

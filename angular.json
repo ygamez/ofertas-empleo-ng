@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sistema-frontend": {
+    "trabajarencuba": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,20 +13,22 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sistema-frontend",
+            "outputPath": "dist/trabajarencuba",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
+              "src/assets/assets/images/logo.png",
               "src/assets"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sistema-frontend:build"
+            "browserTarget": "trabajarencuba:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sistema-frontend:build:production"
+              "browserTarget": "trabajarencuba:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sistema-frontend:build"
+            "browserTarget": "trabajarencuba:build"
           }
         },
         "test": {
@@ -91,7 +93,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["../node_modules/jquery/dist/jquery.js"]
           }
         },
         "lint": {
@@ -111,15 +113,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sistema-frontend:serve"
+            "devServerTarget": "trabajarencuba:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sistema-frontend:serve:production"
+              "devServerTarget": "trabajarencuba:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "sistema-frontend"
+  "defaultProject": "trabajarencuba"
 }

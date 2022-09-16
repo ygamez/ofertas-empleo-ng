@@ -6,94 +6,125 @@
     <div class="col-xl-12 col-md-12">
       <div class="card table-card">
         <div class="card-header">
-          <h4 >Editar Usuario - {{usuario.nombre}}</h4>
+         <!-- <h4 >Editar Usuario - {{usuario.nombre}}</h4>-->
+          <div>
+            <!-- <img *ngIf="!imagenTemp" (click)="fileInputtt.click()" alt="user-image" height="150" src="{{ 'http://localhost:3000/img/user/'  + usuario.image }}" width="150"> -->
+            <img *ngIf="imagenTemp" (click)="fileInputtt.click()" alt="Card image" height="150" src="{{  imagenTemp }}" type="file" width="150">
+            <input #fileInputtt type="file" (change)="seleccionImage($event.target.files[0])" style="display:none;">
+          </div>
+
           <div class="card-header-right">
 
-            <span>Actualizado: {{usuario.updatedAt | amTimeAgo:false}} </span>
+          <!--  <span>Actualizado: {{usuario. | amTimeAgo:false}} </span>-->
 
           </div>
         </div>
+
         <div class="card-block">
           <div class="edit-info">
             <div class="row">
               <div class="col-lg-12">
-                <form [formGroup]="formGroup">
-                  <div class="general-info">
-                    <div class="row">
+                <form [formGroup]="usuarioform" (ngSubmit)="register()">
+                  <div class="row">
+                    <div class="col-sm-6">
 
-                      <div class="col-lg-6">
-                        <table class="table">
-                          <tbody>
-                          <tr>
-                            <td>
-                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.name.errors }">
-                                <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                <input name="name" class="form-control" formControlName="name" placeholder="Nombre y Apellidos" type="text" />
-                              </div>
-                              <div  *ngIf="submitted && f.name.errors" >
-                                <div class="text-danger" *ngIf="f.name.errors.required">Nombre es obligatorio</div>
-                              </div>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.role.errors }">
-                                <span class="input-group-addon"><i class="icofont icofont-license"></i></span>
-                                <select formControlName="role" class="form-control">
-                                  <option value="">Selecciones el Rol</option>
-                                  <option value="ROLE_OBSERVADOR">Rol Observador</option>
-                                  <option value="ROLE_EVALUADOR">Rol Evaluador</option>
-                                  <option value="ROLE_ADMIN">Rol Administrador</option>
-                                </select>
-                              </div>
-                              <div  *ngIf="submitted && f.role.errors" >
-                                <div class="text-danger" *ngIf="f.role.errors.required">El rol es obligatorio</div>
-                              </div>
-                            </td>
-                          </tr>
-
-                          </tbody>
-                        </table>
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.name.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-user-alt-4"></i></span>
+                        <input  class="form-control" formControlName="name" type="text" placeholder="Nombre y Apellidos" />
                       </div>
-                      <!-- end of table col-lg-6 -->
-                      <div class="col-lg-6">
-                        <table class="table">
-                          <tbody>
-                          <tr>
-                            <td>
-
-                              <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.email.errors }">
-                                <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                <input type="text" formControlName="email" class="form-control" placeholder="Correo Electronico"  />
-                              </div>
-                              <div  *ngIf="submitted && f.email.errors" >
-                                <div class="text-danger" *ngIf="f.email.errors.required">Email es obligatorio</div>
-                                <div class="text-danger" *ngIf="f.email.errors.email">No es una direccion de Email valida</div>
-                              </div>
-
-
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="input-group">
-                                <span class="input-group-addon"><i class="icofont icofont-camera-alt"></i></span>
-                                <input type="file" class="form-control" placeholder="Foto de Perfil">
-                              </div>
-                            </td>
-                          </tr>
-
-                          </tbody>
-                        </table>
+                      <div  *ngIf="submitted && f.name.errors" >
+                        <div class="text-danger" *ngIf="f.name.errors.required">nombre y apellidos son obligatorios</div>
                       </div>
-                      <!-- end of table col-lg-6 -->
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.pais.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-map"></i></span>
+                        <input  class="form-control" formControlName="pais" type="text" placeholder="País" />
+                      </div>
+                      <div  *ngIf="submitted && f.pais.errors" >
+                        <div class="text-danger" *ngIf="f.pais.errors.required">el país obligatorio</div>
+                      </div>
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.ciudad.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-location-pin"></i></span>
+                        <input  class="form-control" formControlName="ciudad" type="text" placeholder="Ciudad" />
+                      </div>
+                      <div  *ngIf="submitted && f.ciudad.errors" >
+                        <div class="text-danger" *ngIf="f.ciudad.errors.required">la ciudad es obligatoria</div>
+                      </div>
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.localidad.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-5-star-hotel"></i></span>
+                        <input  class="form-control" formControlName="localidad" type="text" placeholder="Localidad" />
+                      </div>
+                      <div  *ngIf="submitted && f.localidad.errors" >
+                        <div class="text-danger" *ngIf="f.localidad.errors.required">la localidad es obligatoria</div>
+                      </div>
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.sexo.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-group-students"></i></span>
+                        <select formControlName="sexo" class="form-control">
+                          <option value="">Seleccione el sexo o tipo</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                          <option value="Entidad">Entidad</option>
+                        </select>
+                      </div>
+                      <div  *ngIf="submitted && f.sexo.errors" >
+                        <div class="text-danger" *ngIf="f.sexo.errors.required">El sexo es obligatorio</div>
+                      </div>
+                      <br>
+
                     </div>
-                    <!-- end of row -->
-                    <div class="text-center">
-                      <a [routerLink]="['/configuracion/usuario']"  class="btn btn-danger m-r-20 waves-effect">Cancelar</a>
-                      <button class="btn btn-primary waves-effect waves-light m-r-20" (click)="register()" [disabled]="formGroup.invalid">Guardar</button>
+                    <div class="col-sm-6 mobile-inputs">
+                      <div *ngIf="f.sexo.value != 'Entidad'" class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.edad.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-group"></i></span>
+                        <input  class="form-control" formControlName="edad" type="number" placeholder="edad" />
+                      </div>
+                      <div  *ngIf="submitted && f.edad.errors" >
+                        <div class="text-danger" *ngIf="f.edad.errors.required">la edad es obligatoria</div>
+                      </div>
+                      <br>
 
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.email.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                        <input type="text" formControlName="email" class="form-control" placeholder="Correo de Electrónico"  />
+                      </div>
+                      <div  *ngIf="submitted && f.email.errors" >
+                        <div class="text-danger" *ngIf="f.email.errors.required">correo electrónico es obligatorio</div>
+                        <div class="text-danger" *ngIf="f.email.errors.email">no es un correo electrónico valido</div>
+                      </div>
+
+                      <br>
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.nick.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-user-alt-3"></i></span>
+                        <input type="text" formControlName="nick" class="form-control" placeholder="Nick"  />
+                      </div>
+                      <div  *ngIf="submitted && f.nick.errors" >
+                        <div class="text-danger" *ngIf="f.nick.errors.required">nick es obligatorio</div>
+                      </div>
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.password.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-ui-password"></i></span>
+                        <input type="password" formControlName="password" class="form-control" placeholder="Contraseña"  />
+                      </div>
+                      <div  *ngIf="submitted && f.password.errors" >
+                        <div class="text-danger" *ngIf="f.password.errors.required">contraseña es obligatoria</div>
+                      </div>
+                      <br>
+
+                      <div class="input-group" [ngClass]="{ 'input-group-danger': submitted && f.confirmPassword.errors }">
+                        <span class="input-group-addon"><i class="icofont icofont-ui-password"></i></span>
+                        <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Repita contraseña"  />
+                      </div>
+                      <div  *ngIf="submitted && f.confirmPassword.errors" >
+                        <div class="text-danger" *ngIf="f.confirmPassword.errors.required">Campo obligatorio</div>
+                      </div>
+                      <br>
                     </div>
                   </div>
                 </form>
@@ -103,6 +134,8 @@
             </div>
             <!-- end of row -->
           </div>
+          <button class="float-sm-right btn btn-primary waves-effect waves-light m-r-20" (click)="register()">Guardar</button>
+
           <!-- end of edit-info -->
 
         </div>

@@ -20,13 +20,9 @@ export class UsuarioRedictAutService implements CanActivate {
   canActivate() {
     const identity = this.usuarioService.getIdentity();
 
-    if (identity && (identity.role === 'ROLE_OBSERVADOR' || identity.role === 'ROLE_ADMIN' || identity.role === 'ROLE_EVALUADOR')) {
+    if (!identity && (identity.rol != 'USER_ROLE' || identity.rol != 'ADMIN_ROLE')) {
       this.router.navigate(['']);
-      Swal.fire(
-        'Acceso Restringido',
-        'usted ya se encuatra autenticado por eso no puede acceder a esta funcionalidad en estos momentos',
-        'error'
-      );
+
       return false;
     } else {
       return true;

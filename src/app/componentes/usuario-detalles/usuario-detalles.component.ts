@@ -4,6 +4,7 @@ import {ActVarPageService} from '../../servicios/act-var-page.service';
 import {Usuario} from '../../modelos/usuario.model';
 import {UsuarioService} from '../../servicios/usuario.service';
 
+
 @Component({
   selector: 'app-usuario-detalles',
   templateUrl: './usuario-detalles.component.html',
@@ -12,6 +13,7 @@ import {UsuarioService} from '../../servicios/usuario.service';
 export class UsuarioDetallesComponent implements OnInit {
   public valorId = '';
   public usuario: Usuario;
+  public identity: Usuario;
   @Output() message = new EventEmitter<string>();
 
   @Output() messageEvent = new EventEmitter<string>();
@@ -21,21 +23,24 @@ export class UsuarioDetallesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsuario(this.valorId);
+    this.usuario = this.userService.getIdentity();
+    this.getUsuario();
   }
-  getUsuario(id) {
-    this.userService.getUser(id).subscribe(
+  getUsuario() {
+    this.userService.getUser(this.valorId).subscribe(
       response => {
+        console.log(response)
         if ( !response) {
           // existe un error hay que manejarlo
         } else {
-          this.usuario = response;
+          this.usuario = response.usuario;
         }
       },
       error => {
         // hago algo con el error
       }
     );
+    console.log(this.usuario);
   }
 
 }
