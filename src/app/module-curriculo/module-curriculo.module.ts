@@ -13,6 +13,9 @@ import { ModuleCurriculoRoutingModule } from './module-curriculo-routing.module'
 import { ModuleMarerialModule } from '../module-marerial/module-marerial.module';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { ListadoComponent } from './pages/listado/listado.component';
+import { LateralComponent } from './components/targeta/lateral/lateral.component';
+import { CentroSuperiorComponent } from './components/targeta/centro-superior/centro-superior.component';
+import { CentroInferiorComponent } from './components/targeta/centro-inferior/centro-inferior.component';
 
 
 @NgModule({
@@ -24,7 +27,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
     CurriculoTargetaComponent, 
     HomeComponent, 
     ImagenPipe, 
-    ListadoComponent, 
+    ListadoComponent, LateralComponent, CentroSuperiorComponent, CentroInferiorComponent, 
      ],
   imports: [
     CommonModule,

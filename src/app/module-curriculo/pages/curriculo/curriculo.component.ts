@@ -10,14 +10,14 @@ import { tr } from 'date-fns/locale';
   // styleUrls: ['./curriculo.component.css']
   styles: [
 `
-.example-card {
+/* .example-card {
   max-width: 400px;
 }
 
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */
 `
 
   ]

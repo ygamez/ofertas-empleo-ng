@@ -8,11 +8,11 @@
 <div fxLayout = "row wrap" 
      fxLayoutAlign ="center" 
      >
-     <div *ngIf="curriculo != null" 
+     <div *ngIf="!curriculo.length" 
      class="alert alert-danger"> 
      Usted no tiene currículo creado. Para crear uno vaya al menú.. Añadir
    </div>
-<div fxFlex="60" *ngFor="let curriculo of curriculo" >
+<div fxFlex="90" *ngFor="let curriculo of curriculo" >
   
   <app-curriculo-targeta [curriculo] = "curriculo" ></app-curriculo-targeta>
 
