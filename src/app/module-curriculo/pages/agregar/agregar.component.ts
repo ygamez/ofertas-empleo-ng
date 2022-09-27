@@ -8,6 +8,12 @@ import { switchMap } from 'rxjs/operators';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+
+export interface Fruit {
+  name: string;
+}
 
 @Component({
   selector: 'app-agregar',
@@ -15,6 +21,13 @@ import { ConfirmarComponent } from '../../components/confirmar/confirmar.compone
   styleUrls: ['./agregar.component.css']
 })
 export class AgregarComponent implements OnInit {
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  fruits: Fruit[] = [{name: 'Angular'}, {name: 'React'}, {name: 'Django'}];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+  }
 
   get usuario (){
     return { ...this.authService.usuario };
@@ -107,6 +120,14 @@ export class AgregarComponent implements OnInit {
       this.snackBar.open( mensaje, 'Ok!', {
         duration: 3000,
       } )
+    }
+
+    remove(fruit: Fruit): void {
+      const index = this.fruits.indexOf(fruit);
+  
+      if (index >= 0) {
+        this.fruits.splice(index, 1);
+      }
     }
 
 }
