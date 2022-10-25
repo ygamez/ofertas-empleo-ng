@@ -8,14 +8,14 @@ import { CurriculoService } from '../../services/curriculo.service';
   templateUrl: './home.component.html',
   styles: [
     `
-  .container{
+  /* .container{
       margin: 10px
     }
 
     .mat-sidenav {
     width: 300px;
     color:         
-    }
+    } */
     
   `]
 })

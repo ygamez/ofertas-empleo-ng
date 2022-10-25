@@ -11,13 +11,24 @@
 
      <div class="example-form" fxFlex="100" >
         <mat-list-item role="listitem">Perfil:</mat-list-item>
-        <mat-form-field class="example-full-width">
-          <mat-label>Nombre...</mat-label>
-          <input matInput                 
-                type="text"
-                [(ngModel)]="curriculo.nombre"
-                >
+
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <mat-label>Caracteristicaa Principales</mat-label>
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+              {{fruit.name}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input placeholder="Agregar..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
         </mat-form-field>
+
     </div>
 
      <div class="example-form" fxFlex="100" >
