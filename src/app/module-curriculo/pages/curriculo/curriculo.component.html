@@ -3,12 +3,10 @@
 <mat-divider></mat-divider>
 <br>
 
-
-
 <div fxLayout = "row wrap" 
      fxLayoutAlign ="center" 
      >
-     <div *ngIf="curriculo != null" 
+     <div *ngIf="!curriculo.length" 
      class="alert alert-danger"> 
      Usted no tiene currículo creado. Para crear uno vaya al menú.. Añadir
    </div>
