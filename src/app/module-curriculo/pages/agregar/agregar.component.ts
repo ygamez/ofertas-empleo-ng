@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CurriculoResponse } from '../../interfaces/curriculo.interface';
 import { CurriculoService } from '../../services/curriculo.service';
 import { AuthService } from '../../../auth/services/auth.service';
@@ -15,12 +15,27 @@ export interface Fruit {
   name: string;
 }
 
+interface Genero {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
   styleUrls: ['./agregar.component.css']
 })
 export class AgregarComponent implements OnInit {
+  // firstFormGroup = this._formBuilder.group({
+  //   firstCtrl: ['', Validators.required],
+  // });
+  // secondFormGroup = this._formBuilder.group({
+  //   secondCtrl: '',
+  // });
+  isOptional = false;
+
+  // formNameGroup : FormGroup;
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   fruits: Fruit[] = [{name: 'Angular'}, {name: 'React'}, {name: 'Django'}];
@@ -29,9 +44,9 @@ export class AgregarComponent implements OnInit {
     const value = (event.value || '').trim();
   }
 
-  get usuario (){
-    return { ...this.authService.usuario };
-  }
+  // get usuario (){
+  //   return { ...this.authService.usuario };
+  // }
   
   email = new FormControl('', [ Validators.email]);
   
@@ -49,85 +64,127 @@ export class AgregarComponent implements OnInit {
     nombre  : '',
     telefono  : '',
     correo  : '',
-    usuarioid :  this.authService.usuario.id || '' ,
+    // usuarioid :  this.authService.usuario.id || '' ,
   }
 
-  constructor( private curriculoService: CurriculoService,
-               private authService: AuthService,
-               private activatedRoute: ActivatedRoute,
-               private router : Router,
-               private snackBar : MatSnackBar,
-               public dialog : MatDialog   ) { }
+  // constructor( private curriculoService: CurriculoService,
+  //              private authService: AuthService,
+  //              private activatedRoute: ActivatedRoute,
+  //              private router : Router,
+  //              private snackBar : MatSnackBar,
+  //              public dialog : MatDialog,
+  //              private _formBuilder: FormBuilder   ) { this.createForm(); }
 
   ngOnInit() {
 
-    this.activatedRoute.params
-        .pipe(
-          switchMap( ({id })=> this.curriculoService.getCurriculoXId( id ) )
-        )
-        .subscribe( curr => this.curriculo = curr );
+    // this.activatedRoute.params
+    //     .pipe(
+    //       switchMap( ({id })=> this.curriculoService.getCurriculoXId( id ) )
+    //     )
+    //     .subscribe( curr => this.curriculo = curr );
           
         
 
   }
 
-  guardar(){
+  // createForm() {
+  //   this.formNameGroup  = this._formBuilder.group({
+  //     userName: ['', Validators.required]
+  //   });
 
-      if( this.curriculo.nombre.trim().length === 0 ){
-        return;
-      }
-        //actualizar
-      if ( this.curriculo.id ){
-        this.curriculoService.actualizarCurriculo( this.curriculo )
-            .subscribe( curri => {
-              console.log( 'Editando', curri );
-              this.mostrarSnackBar( 'Curriculo actualizado' );
-              this.router.navigate(['/curriculo/curriculo' ]);
-            })
-      }
-      else {
-        //agregar un registro
-        this.curriculoService.addCurriculo( this.curriculo )
-            .subscribe(  resp => {
-              this.router.navigate(['/curriculo/curriculo', resp.id]);
-              this.mostrarSnackBar( 'Curriculo creado' );
-            })
-      }
-    }
+  //  }
 
-    borrar(){
+  // guardar(){
 
-      const dialogo = this.dialog.open( ConfirmarComponent, {
-        width: '400px',
-        data: { ...this.curriculo } 
-      } ) ;
+  //     if( this.curriculo.nombre.trim().length === 0 ){
+  //       return;
+  //     }
+  //       //actualizar
+  //     if ( this.curriculo.id ){
+  //       this.curriculoService.actualizarCurriculo( this.curriculo )
+  //           .subscribe( curri => {
+  //             console.log( 'Editando', curri );
+  //             this.mostrarSnackBar( 'Curriculo actualizado' );
+  //             this.router.navigate(['/curriculo/curriculo' ]);
+  //           })
+  //     }
+  //     else {
+  //       //agregar un registro
+  //       this.curriculoService.addCurriculo( this.curriculo )
+  //           .subscribe(  resp => {
+  //             this.router.navigate(['/curriculo/curriculo', resp.id]);
+  //             this.mostrarSnackBar( 'Curriculo creado' );
+  //           })
+  //     }
+  //   }
 
-      dialogo.afterClosed()
-            .subscribe( resul =>{
-              if ( resul ){
+    // borrar(){
 
-                this.curriculoService.borrarCurriculo( this.curriculo.id )
-                    .subscribe(
-                      resul=> {
-                        this.router.navigate(['/curriculo/curriculo'])
-                        this.mostrarSnackBar( 'Curriculo eliminado' );
-                      }
-                    )}
-            })
-    }
+    //   const dialogo = this.dialog.open( ConfirmarComponent, {
+    //     width: '400px',
+    //     data: { ...this.curriculo } 
+    //   } ) ;
 
-    mostrarSnackBar( mensaje : string ): void{
-      this.snackBar.open( mensaje, 'Ok!', {
-        duration: 3000,
-      } )
-    }
+    //   dialogo.afterClosed()
+    //         .subscribe( resul =>{
+    //           if ( resul ){
 
-    remove(fruit: Fruit): void {
-      const index = this.fruits.indexOf(fruit);
+    //             this.curriculoService.borrarCurriculo( this.curriculo.id )
+    //                 .subscribe(
+    //                   resul=> {
+    //                     this.router.navigate(['/curriculo/curriculo'])
+    //                     this.mostrarSnackBar( 'Curriculo eliminado' );
+    //                   }
+    //                 )}
+    //         })
+    // }
+
+    // mostrarSnackBar( mensaje : string ): void{
+    //   this.snackBar.open( mensaje, 'Ok!', {
+    //     duration: 3000,
+    //   } )
+    // }
+
+    // remove(fruit: Fruit): void {
+    //   const index = this.fruits.indexOf(fruit);
   
-      if (index >= 0) {
-        this.fruits.splice(index, 1);
-      }
-    }
+    //   if (index >= 0) {
+    //     this.fruits.splice(index, 1);
+    //   }
+    // }
+
+
+    generos: Genero[] = [
+      {value: 'F', viewValue: 'Femenino'},
+      {value: 'M', viewValue: 'Masculino'},
+    ];
+
+  isLinear = true;
+  formNameGroup : FormGroup;
+  formPasswordGroup : FormGroup;
+  formEmailGroup : FormGroup;
+  formPhoneGroup : FormGroup;
+  constructor(private fb: FormBuilder) { this.createForm(); }
+  ngOnit() {}
+  createForm() {
+  this.formNameGroup  = this.fb.group({
+    userName: ['', Validators.required],
+    userEdad: ['', Validators.required],
+    userGenero: ['', Validators.required],
+    userPiel: ['', Validators.required],
+    userDireccion: ['', Validators.required],
+    userPerfil: ['', Validators.required],
+  });
+
+  this.formPasswordGroup  = this.fb.group({
+    passWord: ['', Validators.required]
+  });
+  this.formEmailGroup  = this.fb.group({
+    emailID: ['', Validators.compose([Validators.required, Validators.email])]
+  });
+  this.formPhoneGroup  = this.fb.group({
+    mobile: ['', Validators.compose([Validators.required, Validators.min(10)])]
+  });
+  }
 
 }

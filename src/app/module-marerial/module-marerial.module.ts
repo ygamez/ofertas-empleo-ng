@@ -11,8 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material';
 
 @NgModule({
   exports: [
@@ -25,7 +27,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSelectModule,
     MatSidenavModule,
+    MatStepperModule,
     MatSnackBarModule,
     MatToolbarModule,
     MatChipsModule

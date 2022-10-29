@@ -16,6 +16,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import { LateralComponent } from './components/targeta/lateral/lateral.component';
 import { CentroSuperiorComponent } from './components/targeta/centro-superior/centro-superior.component';
 import { CentroInferiorComponent } from './components/targeta/centro-inferior/centro-inferior.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,9 +33,11 @@ import { CentroInferiorComponent } from './components/targeta/centro-inferior/ce
   imports: [
     CommonModule,
     HttpClientModule,
-    FlexLayoutModule, 
+    FlexLayoutModule,
+    FormsModule, 
     ModuleCurriculoRoutingModule,
     ModuleMarerialModule,
+    ReactiveFormsModule
     
   ],
   entryComponents: [

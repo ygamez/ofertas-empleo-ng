@@ -13,6 +13,14 @@
     margin-left: 40px;
     margin-right: 40px;
   }
+
+  .contenedor {
+    display: flex;
+    flex-direction: row;
+    margin-left : 6px;
+    margin-right : 10px;
+    max-width: 600px;
+}
   
   .example-full-width {
     width: 90%;

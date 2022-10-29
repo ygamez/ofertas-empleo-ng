@@ -24,5 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ]
+
 })
 export class AutModule { }
