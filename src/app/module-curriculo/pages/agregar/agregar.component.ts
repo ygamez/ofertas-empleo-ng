@@ -161,23 +161,30 @@ export class AgregarComponent implements OnInit {
 
   isLinear = true;
   formNameGroup : FormGroup;
-  formPasswordGroup : FormGroup;
+  formFormacionGroup : FormGroup;
   formEmailGroup : FormGroup;
   formPhoneGroup : FormGroup;
   constructor(private fb: FormBuilder) { this.createForm(); }
   ngOnit() {}
   createForm() {
   this.formNameGroup  = this.fb.group({
-    userName: ['', Validators.required],
-    userEdad: ['', Validators.required],
-    userGenero: ['', Validators.required],
-    userPiel: ['', Validators.required],
-    userDireccion: ['', Validators.required],
-    userPerfil: ['', Validators.required],
+    userName: ['', 
+    // Validators.required
+  ],
+    userGenero: ['', 
+    // Validators.required
+  ],
+    userPiel: ['', 
+    // Validators.required
+  ],
+    userDireccion: ['', 
+    // Validators.required
+  ],
+    userPerfil: [''],
   });
 
-  this.formPasswordGroup  = this.fb.group({
-    passWord: ['', Validators.required]
+  this.formFormacionGroup  = this.fb.group({
+    Formacion: ['', Validators.required]
   });
   this.formEmailGroup  = this.fb.group({
     emailID: ['', Validators.compose([Validators.required, Validators.email])]

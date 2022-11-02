@@ -1,5 +1,7 @@
 <h2 align="center"> Datos del Currículo </h2>
+
 <mat-horizontal-stepper [linear]="isLinear" #stepper labelPosition="bottom">
+
   <mat-step [stepControl]="formNameGroup" label="Datos Personales" >
     <div style="padding-top: 3%;">
         <form [formGroup]="formNameGroup">
@@ -9,10 +11,10 @@
               <div>
 
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Nombre" required formControlName="userName">
-                  <mat-error *ngIf="formNameGroup.controls['userName'].hasError('required')">
+                  <input matInput placeholder="Nombre"  formControlName="userName">
+                  <!-- <mat-error *ngIf="formNameGroup.controls['userName'].hasError('required')">
                           Username is required!
-                      </mat-error>
+                      </mat-error> -->
                 </mat-form-field>
               </div>
 
@@ -20,18 +22,19 @@
 
                 <mat-form-field class="contenedor" appearance="fill">
                   <mat-label>Género</mat-label>
-                  <mat-select [(ngModel)]="selectedValue" name="genero" formControlName="userGenero">
+                  <mat-select  [(ngModel)]="selectedValue" name="genero" formControlName="userGenero">
                     <mat-option *ngFor="let genero of generos" [value]="genero.value">
                       {{genero.viewValue}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
+
                 <!-- <p> Selected genero: {{selectedValue}} </p> -->
 
                 <mat-form-field class="contenedor"
                                 appearance="fill">
-                  <mat-label>Seleccione</mat-label>
-                  <mat-select required 
+                  <mat-label>Color de piel</mat-label>
+                  <mat-select  
                               formControlName="userPiel">
                     <mat-option value="option1">Negro</mat-option>
                     <mat-option value="option3">Blanco</mat-option>
@@ -41,17 +44,16 @@
               </div>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Dirección Particular" required formControlName="userDireccion">
+                <input matInput placeholder="Dirección Particular"  formControlName="userDireccion">
                 <mat-error *ngIf="formNameGroup.controls['userDireccion'].hasError('required')">
-                        Username is required!
+                      Dirección particular requerida!
                     </mat-error>
               </mat-form-field>
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Otros aspectos que desée agregar...</mat-label>
+                <mat-label>Otros aspectos del perfil que desée agregar...</mat-label>
                 <textarea matInput 
                           placeholder="Escriba..."
-                          required
-                          formControlName="userDireccion"></textarea>
+                          formControlName="userPerfil"></textarea>
               </mat-form-field>
             </div>
             <br/>
@@ -60,17 +62,41 @@
     </div>
   </mat-step>
 
-  <mat-step [stepControl]="formPasswordGroup" label="Formación" >
+  <mat-step [stepControl]="formFormacionGroup" label="Formación" >
     <div style="padding-top: 3%;">
-        <form [formGroup]="formPasswordGroup">
+        <form [formGroup]="formFormacionGroup">
             <!-- <ng-template matStepLabel>Name</ng-template> -->
             <div class="example-form">
-              <mat-form-field class="example-full-width">
-                <input type="password" matInput placeholder="Password" required formControlName="passWord">
-                <mat-error *ngIf="formPasswordGroup.controls['passWord'].hasError('required')">
-                        Password is required!
+
+              <div >
+
+                <mat-form-field class="container-corto" hintLabel="Solo Números" appearance="fill">
+                  <mat-label>Años </mat-label>
+                  <input matInput #input maxlength="9" placeholder="Desde - Hasta">
+                  <mat-hint align="end">{{input.value?.length }}</mat-hint>
+                </mat-form-field>
+              
+                <mat-form-field class="container-largo" appearance="fill">
+                  <mat-label>Seleccione el centro de estudio</mat-label>
+                  <mat-select>
+                    <mat-option value="option">Centro de estudios</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="container-largo" hintLabel="Título Obtenido" appearance="fill">
+                  <mat-label>Escriba </mat-label>
+                  <input matInput #input placeholder="Escriba">
+                  <mat-hint align="end"></mat-hint>
+                </mat-form-field>
+
+              </div>
+
+              <!-- <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Formacion" required formControlName="Formacion">
+                <mat-error *ngIf="formFormacionGroup.controls['Formacion'].hasError('required')">
+                        Formación requerida!
                     </mat-error>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
             <br/>
             <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;

@@ -22,7 +22,7 @@ import { CurriculoResponse } from '../../interfaces/curriculo.interface';
             flex-wrap: wrap;
             flex-basis: 25%;
             text-align: center;
-            background-color: #1F497D;  
+            background-color: #323236;  
             color: #FFF;
             border: 1px solid #000;
             border-right: 0;
@@ -45,7 +45,7 @@ import { CurriculoResponse } from '../../interfaces/curriculo.interface';
                     flex-basis: 10%;
                 }
                 .centro{
-                    flex-basis: 30%;
+                    flex-basis: 50%;
                 }
             }
           
