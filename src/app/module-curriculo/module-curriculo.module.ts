@@ -37,8 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule, 
     ModuleCurriculoRoutingModule,
     ModuleMarerialModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,    
   ],
   entryComponents: [
     ConfirmarComponent,

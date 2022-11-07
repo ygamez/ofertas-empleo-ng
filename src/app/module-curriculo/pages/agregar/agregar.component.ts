@@ -184,8 +184,14 @@ export class AgregarComponent implements OnInit {
   });
 
   this.formFormacionGroup  = this.fb.group({
-    Formacion: ['', Validators.required]
+    userFormacion: ['', 
+     Validators.required
+  ],
+    userCentroformador: ['', 
+     Validators.required
+  ],
   });
+
   this.formEmailGroup  = this.fb.group({
     emailID: ['', Validators.compose([Validators.required, Validators.email])]
   });
